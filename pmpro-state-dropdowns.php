@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: PMPro State Dropdowns
+ * Plugin Name: Paid Memberships Pro - State Dropdowns Add On
  * Description: Creates an autopopulated field for countries and states/provinces for billing fields.
  * Author: Stranger Studios
  * Author URI: https://strangerstuidos.com
