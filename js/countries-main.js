@@ -1,7 +1,8 @@
 jQuery(document).ready(function($){
 
-	//for compatibility with older PMPro, make sure bcountry fields have ids
+	//for compatibility with older PMPro, make sure bcountry & scountry fields have ids
 	jQuery("[name='bcountry']").attr('id', 'bcountry');
+	jQuery("[name='scountry']").attr('id', 'scountry');
 
 	// //make sure we have a bcountry field to work with
 	if(jQuery('#bcountry').length) {	
