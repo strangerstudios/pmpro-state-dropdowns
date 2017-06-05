@@ -58,8 +58,8 @@ class PMPro_State_Dropdowns {
 		global $current_user;
 
 		$user_saved_countries = array(
-			'bcountry'	=>	get_user_meta( $current_user->ID, 'bcountry' ),
-			'bstate'	=>	get_user_meta( $current_user->ID, 'bstate' ),
+			'bcountry'	=>	get_user_meta( $current_user->ID, 'pmpro_bcountry' ),
+			'bstate'	=>	get_user_meta( $current_user->ID, 'pmpro_bstate' ),
 			'scountry'  =>  get_user_meta( $current_user->ID, 'pmpro_scountry' ),
 			'sstate'    =>  get_user_meta( $current_user->ID, 'pmpro_sstate' ),
 			);
