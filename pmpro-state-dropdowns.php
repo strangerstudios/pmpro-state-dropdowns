@@ -46,7 +46,7 @@ class PMPro_State_Dropdowns {
 		if(!is_admin() && empty($_REQUEST['level']) && !is_page('your-profile'))
 			return;
 		
-		wp_register_script( 'pmpro-countries', plugins_url( '/js/countries.js', __FILE__ ), array('jquery') );
+		wp_register_script( 'pmpro-countries', plugins_url( '/js/crs.js', __FILE__ ), array('jquery') );
 		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery', 'pmpro-countries') );		
 		wp_enqueue_script( 'pmpro-countries' );
 		wp_enqueue_script( 'pmpro-countries-main' );
@@ -58,15 +58,14 @@ class PMPro_State_Dropdowns {
 		global $current_user;
 
 		$user_saved_countries = array(
-			'country_selected'	=>	get_user_meta( $current_user->ID, 'pmpro_bcountry' ),
-			'state_selected'	=>	get_user_meta( $current_user->ID, 'pmpro_bstate' ),
+			'bcountry'	=>	get_user_meta( $current_user->ID, 'bcountry' ),
+			'bstate'	=>	get_user_meta( $current_user->ID, 'bstate' ),
 			'scountry'  =>  get_user_meta( $current_user->ID, 'pmpro_scountry' ),
 			'sstate'    =>  get_user_meta( $current_user->ID, 'pmpro_sstate' ),
 			);
+
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_dropdowns', $user_saved_countries );
 	}
-
-
 
 }
 
