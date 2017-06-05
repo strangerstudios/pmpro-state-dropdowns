@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: PMPro State Dropdowns
+ * Plugin Name: Paid Memberships Pro - State Dropdowns Add On
  * Description: Creates an autopopulated field for countries and states/provinces for billing fields.
  * Author: Stranger Studios
  * Author URI: https://strangerstuidos.com
@@ -36,9 +36,19 @@ class PMPro_State_Dropdowns {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
 	}
 
-	public static function enqueue_styles_scripts(){
-		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ) );
-		wp_enqueue_script( 'pmpro-countries', plugins_url( '/js/countries.js', __FILE__ ) );
+	public static function enqueue_styles_scripts(){		
+		//we only want to enqueue this on certain pages
+		$script_name = basename($_SERVER['SCRIPT_NAME']);
+		if(is_admin() &&  $script_name !== 'user-edit.php' && 
+						  $script_name !== 'profile.php' && 
+						  (empty($_REQUEST['page']) || $_REQUEST['page'] != 'pmpro-addmember') )
+			return;
+		if(!is_admin() && empty($_REQUEST['level']) && !is_page('your-profile'))
+			return;
+		
+		wp_register_script( 'pmpro-countries', plugins_url( '/js/countries.js', __FILE__ ), array('jquery') );
+		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery', 'pmpro-countries') );		
+		wp_enqueue_script( 'pmpro-countries' );
 		wp_enqueue_script( 'pmpro-countries-main' );
 
 		/**
@@ -49,9 +59,11 @@ class PMPro_State_Dropdowns {
 
 		$user_saved_countries = array(
 			'country_selected'	=>	get_user_meta( $current_user->ID, 'pmpro_bcountry' ),
-			'state_selected'	=>	get_user_meta( $current_user->ID, 'pmpro_bstate' )
+			'state_selected'	=>	get_user_meta( $current_user->ID, 'pmpro_bstate' ),
+			'scountry'  =>  get_user_meta( $current_user->ID, 'pmpro_scountry' ),
+			'sstate'    =>  get_user_meta( $current_user->ID, 'pmpro_sstate' ),
 			);
-		wp_localize_script( 'pmpro-countries-main', 'test_object', $user_saved_countries );
+		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_dropdowns', $user_saved_countries );
 	}
 
 
