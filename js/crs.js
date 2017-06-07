@@ -106,6 +106,10 @@ var _data = [["Afghanistan","AF","Badakhshan~BDS|Badghis~BDG|Baghlan~BGL|Balkh~B
           var index = (_showEmptyCountryOption) ? countryElement.selectedIndex - 1 : countryElement.selectedIndex;
           var data = _countries[index][3];
           _setDefaultRegionValue(regionElement, data, defaultRegionSelectedValue, useShortcode);
+		  
+		  //If we weren't able to set a value, then invert useShortcode and try again in case the default value was entered differently	  
+		  if(regionElement.selectedIndex === 0)
+			_setDefaultRegionValue(regionElement, data, defaultRegionSelectedValue, !useShortcode);
         }
       } else if (_showEmptyCountryOption === false) {
         _populateRegionFields(countryElement, regionElement);
