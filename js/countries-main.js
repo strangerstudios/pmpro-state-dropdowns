@@ -1,12 +1,18 @@
 jQuery(document).ready(function($){
 
-	//for compatibility with older PMPro, make sure bcountry & scountry fields have ids
+	console.log(pmpro_state_dropdowns);
+
+	//for compatibility with older PMPro, make sure bcountry fields have ids
 	jQuery("[name='bcountry']").attr('id', 'bcountry');
 	jQuery("[name='scountry']").attr('id', 'scountry');
+
+	jQuery("[name='pmpro_bcountry']").attr('id', 'bcountry');
+	jQuery("[name='pmpro_bstate']").attr('id', 'bstate');
 
 	// //make sure we have a bcountry field to work with
 	if(jQuery('#bcountry').length) {	
 		jQuery('#bcountry').attr('class', 'crs-country').attr('data-region-id', 'bstate').attr('data-default-value', pmpro_state_dropdowns.bcountry);	
+		
 		jQuery("[name='bstate']").replaceWith('<select id="bstate" name="bstate"></select>');  //convert to dropdown so states can auto-populate
 		jQuery('#bstate').attr('data-default-value', pmpro_state_dropdowns.bstate );
 
