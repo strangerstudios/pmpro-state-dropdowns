@@ -18,7 +18,10 @@ jQuery(document).ready(function($){
 		jQuery('#bstate').attr('data-default-value', pmpro_state_dropdowns.bstate );
 		jQuery('#bstate').attr('data-value', 'shortcode');
 
-}	
+		//move #bcountry field and label above #bfirstname field and label
+		var bcountryDiv = jQuery('label[for="bcountry"]').closest('div');
+		bcountryDiv.insertBefore('label[for="bfirstname"]').closest('div');
+	}	
 
 	//pmpro-shipping support
 	if(jQuery('#scountry').length) {
@@ -31,6 +34,12 @@ jQuery(document).ready(function($){
 		jQuery('#sstate').replaceWith('<select id="sstate" name="sstate"></select>');  //convert to dropdown so states can auto-populate   
 		jQuery('#sstate').attr('data-default-value', pmpro_state_dropdowns.sstate );
 		jQuery("#sstate").attr('data-value', 'shortcode');
+
+		//move #scountry field and label above #sfirstname field and label
+
+		var scountryDiv = jQuery('label[for="scountry"]').closest('div');
+		scountryDiv.insertBefore('label[for="sfirstname"]').closest('div');
 	}
+
 });
 
