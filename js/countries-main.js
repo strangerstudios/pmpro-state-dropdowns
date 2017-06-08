@@ -36,9 +36,19 @@ jQuery(document).ready(function($){
 		jQuery("#sstate").attr('data-value', 'shortcode');
 
 		//move #scountry field and label above #sfirstname field and label
-
 		var scountryDiv = jQuery('label[for="scountry"]').closest('div');
 		scountryDiv.insertBefore('label[for="sfirstname"]').closest('div');
+	}
+
+	//PMPro orders page support
+	if(jQuery('#billing_country').length){
+		jQuery('#billing_country').replaceWith('<select id="billing_country" name="billing_country"></select>'); 
+		jQuery('#billing_country').attr('class', 'crs-country').attr('data-region-id', 'billing_state').attr('data-default-value', pmpro_state_dropdowns.bcountry);
+		jQuery("#billing_country").attr('data-value', 'shortcode');
+
+		jQuery('#billing_state').replaceWith('<select id="billing_state" name="billing_state"></select>');
+		jQuery('#billing_state').attr('data-default-value', pmpro_state_dropdowns.bstate );
+		jQuery("#billing_state").attr('data-value', 'shortcode');
 	}
 
 });
