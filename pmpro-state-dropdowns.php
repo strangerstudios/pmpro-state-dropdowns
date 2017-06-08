@@ -36,7 +36,9 @@ class PMPro_State_Dropdowns {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
 	}
 
-	public static function enqueue_styles_scripts(){		
+	public static function enqueue_styles_scripts(){
+		global $current_user;
+
 		//we only want to enqueue this on certain pages
 		$script_name = basename($_SERVER['SCRIPT_NAME']);
 		if(is_admin() &&  $script_name !== 'user-edit.php' && 
@@ -55,14 +57,32 @@ class PMPro_State_Dropdowns {
 		 * Data for localize script, get user meta from the user and load it into fields using jquery from countries-main.js
 		 * @internal: Add in a nonce for security reasons.
 		 */
-		global $current_user;
 
-		$user_saved_countries = array(
-			'bcountry'	=>	get_user_meta( $current_user->ID, 'pmpro_bcountry' ),
-			'bstate'	=>	get_user_meta( $current_user->ID, 'pmpro_bstate' ),
-			'scountry'  =>  get_user_meta( $current_user->ID, 'pmpro_scountry' ),
-			'sstate'    =>  get_user_meta( $current_user->ID, 'pmpro_sstate' ),
-			);
+		$user_saved_countries = array();
+
+		if( isset( $_REQUEST['bcountry'] ) ){
+			$user_saved_countries['bcountry'] = $_REQUEST['bcountry'];
+		}else{
+			$user_saved_countries['bcountry'] = get_user_meta( $current_user->ID, 'pmpro_bcountry', true );
+		}
+
+		if( isset( $_REQUEST['bstate'] ) ){
+			$user_saved_countries['bstate'] = $_REQUEST['bstate'];
+		}else{
+			$user_saved_countries['bstate'] = get_user_meta( $current_user->ID, 'pmpro_bstate', true );
+		}
+
+		if( isset( $_REQUEST['scountry'] ) ){
+			$user_saved_countries['scountry'] = $_REQUEST['scountry'];
+		}else{
+			$user_saved_countries['scountry'] = get_user_meta( $current_user->ID, 'pmpro_scountry', true );
+		}
+
+		if( isset( $_REQUEST['sstate'] ) ){
+			$user_saved_countries['sstate'] = $_REQUEST['sstate'];
+		}else{
+			$user_saved_countries['sstate'] = get_user_meta( $current_user->ID, 'pmpro_sstate', true );
+		}
 
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_dropdowns', $user_saved_countries );
 	}
