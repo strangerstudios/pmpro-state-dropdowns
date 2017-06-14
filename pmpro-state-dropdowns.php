@@ -46,15 +46,26 @@ class PMPro_State_Dropdowns {
 			$the_user_id = $current_user->ID;
 		}
 
+		$the_user_id = $user_id;
+
+		//fallback to current user on pages that don't support $user_id variable.
+		if( empty( $the_user_id ) ){
+			$the_user_id = $current_user->ID;
+		}
+	
 		//we only want to enqueue this on certain pages
-		$script_name = basename($_SERVER['SCRIPT_NAME']);
-		if(is_admin() &&  $script_name !== 'user-edit.php' && 
-						  $script_name !== 'profile.php' && 
-						  (empty($_REQUEST['page']) || $_REQUEST['page'] != 'pmpro-addmember') )
+		 $script_name = basename( $_SERVER['SCRIPT_NAME'] );
+		if( is_admin() &&  $script_name !== 'user-edit.php' && 
+						   $script_name !== 'profile.php' && 
+						  ( empty( $_REQUEST['page'] ) || $_REQUEST['page'] != 'pmpro-addmember' && $_REQUEST['page'] != 'pmpro-orders'  ) ){
 			return;
-		if(!is_admin() && empty($_REQUEST['level']) && !is_page('your-profile'))
+		}
+			
+
+		if( !is_admin() && empty( $_REQUEST['level'] ) && !is_page( 'your-profile' ) ){
 			return;
-		
+		}
+
 		wp_register_script( 'pmpro-countries', plugins_url( '/js/crs.js', __FILE__ ), array('jquery') );
 		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery', 'pmpro-countries') );		
 		wp_enqueue_script( 'pmpro-countries' );
@@ -64,32 +75,43 @@ class PMPro_State_Dropdowns {
 		 * Data for localize script, get user meta from the user and load it into fields using jquery from countries-main.js
 		 * @internal: Add in a nonce for security reasons.
 		 */
-
 		$user_saved_countries = array();
 
-		if( isset( $_REQUEST['bcountry'] ) ){
-			$user_saved_countries['bcountry'] = $_REQUEST['bcountry'];
-		}else{
-			$user_saved_countries['bcountry'] = get_user_meta( $the_user_id, 'pmpro_bcountry', true );
+		//check to see if user is  on the admin page.
+		if( is_admin() && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ){
+			$morder = new MemberOrder($_GET['order']);
 		}
+		
+		//if $morder is not empty (i.e. on the orders page try to get details from REQUEST or USER META )
+		if( empty($morder) ){
+			if( isset( $_REQUEST['bcountry'] ) ){
+				$user_saved_countries['bcountry'] = $_REQUEST['bcountry'];
+			}else{
+				$user_saved_countries['bcountry'] = get_user_meta( $the_user_id, 'pmpro_bcountry', true );
+			}
 
-		if( isset( $_REQUEST['bstate'] ) ){
-			$user_saved_countries['bstate'] = $_REQUEST['bstate'];
-		}else{
-			$user_saved_countries['bstate'] = get_user_meta( $the_user_id, 'pmpro_bstate', true );
-		}
+			if( isset( $_REQUEST['bstate'] ) ){
+				$user_saved_countries['bstate'] = $_REQUEST['bstate'];
+			}else{
+				$user_saved_countries['bstate'] = get_user_meta( $the_user_id, 'pmpro_bstate', true );
+			}
 
-		if( isset( $_REQUEST['scountry'] ) ){
-			$user_saved_countries['scountry'] = $_REQUEST['scountry'];
-		}else{
-			$user_saved_countries['scountry'] = get_user_meta( $the_user_id, 'pmpro_scountry', true );
-		}
+			if( isset( $_REQUEST['scountry'] ) ){
+				$user_saved_countries['scountry'] = $_REQUEST['scountry'];
+			}else{
+				$user_saved_countries['scountry'] = get_user_meta( $the_user_id, 'pmpro_scountry', true );
+			}
 
-		if( isset( $_REQUEST['sstate'] ) ){
-			$user_saved_countries['sstate'] = $_REQUEST['sstate'];
+			if( isset( $_REQUEST['sstate'] ) ){
+				$user_saved_countries['sstate'] = $_REQUEST['sstate'];
+			}else{
+				$user_saved_countries['sstate'] = get_user_meta( $the_user_id, 'pmpro_sstate', true );
+			}
 		}else{
-			$user_saved_countries['sstate'] = get_user_meta( $the_user_id, 'pmpro_sstate', true );
-		}
+			//by default PMPro Orders page only takes billing address and does not display shipping address. Only pass necessary information.
+			$user_saved_countries['bcountry'] = $morder->billing->country;
+			$user_saved_countries['bstate'] = $morder->billing->state;			
+		}	
 
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_dropdowns', $user_saved_countries );
 	}
