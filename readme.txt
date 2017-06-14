@@ -5,11 +5,16 @@ Requires at least: 4
 Tested up to: 4.8
 Stable tag: .1
 
-Converts state fields on the checkout and edit profile pages to dropdowns autopopulated based on the selected country.
+Converts state fields on the checkout, edit profile and order pages to dropdowns autopopulated based on the selected country. 
 
 == Description ==
 
-Converts state fields on the checkout and edit profile pages to dropdowns autopopulated based on the selected country.
+Converts state fields on the checkout, edit profile and order pages to dropdowns autopopulated based on the selected country.
+
+PMPro State Dropdown field integrates with the following areas in Paid Memberships Pro:
+
+* Billing fields (Checkout, edit user and orders page)
+* Shipping Address on Membership Checkout add-on: https://www.paidmembershipspro.com/add-ons/plus-add-ons/shipping-address-membership-checkout/
 
 == Installation ==
 
@@ -25,8 +30,17 @@ Please post it in the GitHub issue tracker here: https://github.com/strangerstud
 
 = I need help installing, configuring, or customizing the plugin. =
 
-Please visit our premium support site at http://www.paidmembershipspro.com for more documentation and our support forums.
+Please visit our premium support site at https://www.paidmembershipspro.com for more documentation and our support forums.
+
+= The state fields are not showing correctly for pre-existing users =
+
+Existing users that have entered their State/Province before using this add-on may be required to update their profile while PMPro State Dropdowns is activated. This is usually caused by incorrect spelling of the State/Province. (This only affects the front-end of your site and won't affect the previously saved user meta)
+
+= Some States/Provinces are missing or incorrect from the State/Province dropdown =
+
+Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+
 = .1 =
 * Initial Release
