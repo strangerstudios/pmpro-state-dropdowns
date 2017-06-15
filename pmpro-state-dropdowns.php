@@ -59,11 +59,12 @@ class PMPro_State_Dropdowns {
 			return;
 		}
 
+		/**
+		 * Register our JS scripts
+		 */		
 		wp_register_script( 'pmpro-countries', plugins_url( '/js/crs.js', __FILE__ ), array('jquery') );
 		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery', 'pmpro-countries') );		
-		wp_enqueue_script( 'pmpro-countries' );
-		wp_enqueue_script( 'pmpro-countries-main' );
-
+		
 		/**
 		 * Data for localize script, get user meta from the user and load it into fields using jquery from countries-main.js
 		 * @internal: Add in a nonce for security reasons.
@@ -109,11 +110,13 @@ class PMPro_State_Dropdowns {
 		}	
 
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_dropdowns', $user_saved_countries );
+		
+		/**
+		 * Finally, enqueue the scripts
+		 */
+		wp_enqueue_script( 'pmpro-countries' );
+		wp_enqueue_script( 'pmpro-countries-main' );
 	}
-
-
-
-
 }
 
 PMPro_State_Dropdowns::instance();
