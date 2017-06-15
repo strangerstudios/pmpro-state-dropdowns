@@ -37,7 +37,7 @@ class PMPro_State_Dropdowns {
 	}
 
 	public static function enqueue_styles_scripts(){
-		global $current_user, $user_id, $order_id;
+		global $current_user, $user_id, $order_id, $pmpro_default_country;
 
 		$the_user_id = $user_id;
 
@@ -81,6 +81,8 @@ class PMPro_State_Dropdowns {
 		if( empty($morder) ){
 			if( isset( $_REQUEST['bcountry'] ) ){
 				$user_saved_countries['bcountry'] = $_REQUEST['bcountry'];
+			}elseif ( empty( get_user_meta( $the_user_id, 'pmpro_bcountry', true ) ) ) {
+				$user_saved_countries['bcountry'] = $pmpro_default_country;
 			}else{
 				$user_saved_countries['bcountry'] = get_user_meta( $the_user_id, 'pmpro_bcountry', true );
 			}
