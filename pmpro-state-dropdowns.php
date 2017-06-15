@@ -72,7 +72,7 @@ class PMPro_State_Dropdowns {
 		$user_saved_countries = array();
 
 		//check to see if user is  on the admin page.
-		if( is_admin() && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ){
+		if( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ){
 			$morder = new MemberOrder($_GET['order']);
 		}
 		
