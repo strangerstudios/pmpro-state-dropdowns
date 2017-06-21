@@ -8,7 +8,6 @@
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: pmpro-state-dropdown
- * Domain Path: Domain Path
  * Network: false
  */
 
@@ -94,6 +93,8 @@ class PMPro_State_Dropdowns {
 
 			if( isset( $_REQUEST['scountry'] ) ){
 				$user_saved_countries['scountry'] = $_REQUEST['scountry'];
+			}elseif ( empty( get_user_meta( $the_user_id, 'pmpro_scountry', true ) ) ) {
+				$user_saved_countries['scountry'] = $pmpro_default_country;
 			}else{
 				$user_saved_countries['scountry'] = get_user_meta( $the_user_id, 'pmpro_scountry', true );
 			}
