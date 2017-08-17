@@ -74,6 +74,13 @@ class PMPro_State_Dropdowns {
 		if( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ){
 			$morder = new MemberOrder($_GET['order']);
 		}
+
+		//if the page is edit user or profile, change the ID to '#pmpro_bstate' otherwise default to '#bstate'.
+		if( $script_name == 'user-edit.php' || $script_name == 'profile.php' ){
+			$user_saved_countries['state_id'] = 'pmpro_bstate';
+		}else{
+			$user_saved_countries['state_id'] = 'bstate';
+		}
 		
 		//if $morder is not empty (i.e. on the orders page try to get details from REQUEST or USER META )
 		if( empty($morder) ){
