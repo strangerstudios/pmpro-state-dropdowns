@@ -1,7 +1,5 @@
 jQuery(document).ready(function($){
 
-	console.log(pmpro_state_dropdowns);
-
 	//for compatibility with older PMPro, make sure bcountry fields have ids
 	jQuery("[name='bcountry']").attr('id', 'bcountry');
 	jQuery("[name='scountry']").attr('id', 'scountry');	
