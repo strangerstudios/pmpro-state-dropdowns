@@ -54,7 +54,7 @@ class PMPro_State_Dropdowns {
 		}
 			
 
-		if( !is_admin() && empty( $_REQUEST['level'] ) && !is_page( 'your-profile' ) ){
+		if( ( !is_admin() && empty( $_REQUEST['level'] ) && !is_page( 'your-profile' ) ) || !is_page( $pmpro_pages[ 'membership-billing' ] )  ){
 			return;
 		}
 
