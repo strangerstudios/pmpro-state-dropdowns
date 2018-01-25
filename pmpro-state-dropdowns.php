@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin Name: Paid Memberships Pro - State Dropdowns Add On
+ * Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
  * Description: Creates an autopopulated field for countries and states/provinces for billing fields.
- * Author: Stranger Studios
- * Author URI: https://strangerstuidos.com
  * Version: 0.1
+ * Author: Paid Memberships Pro
+ * Author URI: https://www.paidmembershipspro.com
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: pmpro-state-dropdown
@@ -120,3 +121,19 @@ class PMPro_State_Dropdowns {
 }
 
 PMPro_State_Dropdowns::instance();
+
+/*
+	Function to add links to the plugin row meta
+*/
+function pmpro_state_dropdowns_plugin_row_meta($links, $file) {
+	if(strpos($file, 'pmpro-state-dropdowns.php') !== false)
+	{
+		$new_links = array(
+			'<a href="' . esc_url('https://www.paidmembershipspro.com/add-ons/state-dropdown/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro' ) ) . '">' . __( 'Docs', 'pmpro' ) . '</a>',
+			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro' ) ) . '">' . __( 'Support', 'pmpro' ) . '</a>',
+		);
+		$links = array_merge($links, $new_links);
+	}
+	return $links;
+}
+add_filter('plugin_row_meta', 'pmpro_state_dropdowns_plugin_row_meta', 10, 2);
