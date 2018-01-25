@@ -9,7 +9,6 @@
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: pmpro-state-dropdown
- * Domain Path: Domain Path
  * Network: false
  */
 
@@ -76,6 +75,13 @@ class PMPro_State_Dropdowns {
 		if( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ){
 			$morder = new MemberOrder($_GET['order']);
 		}
+
+		//if the page is edit user or profile, change the ID to '#pmpro_bstate' otherwise default to '#bstate'.
+		if( $script_name == 'user-edit.php' || $script_name == 'profile.php' ){
+			$user_saved_countries['state_id'] = 'pmpro_bstate';
+		}else{
+			$user_saved_countries['state_id'] = 'bstate';
+		}
 		
 		//if $morder is not empty (i.e. on the orders page try to get details from REQUEST or USER META )
 		if( empty($morder) ){
@@ -95,6 +101,8 @@ class PMPro_State_Dropdowns {
 
 			if( isset( $_REQUEST['scountry'] ) ){
 				$user_saved_countries['scountry'] = $_REQUEST['scountry'];
+			}elseif ( empty( get_user_meta( $the_user_id, 'pmpro_scountry', true ) ) ) {
+				$user_saved_countries['scountry'] = $pmpro_default_country;
 			}else{
 				$user_saved_countries['scountry'] = get_user_meta( $the_user_id, 'pmpro_scountry', true );
 			}
