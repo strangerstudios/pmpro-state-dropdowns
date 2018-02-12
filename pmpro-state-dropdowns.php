@@ -54,7 +54,8 @@ class PMPro_State_Dropdowns {
 		}
 			
 
-		if( ( !is_admin() && empty( $_REQUEST['level'] ) && !is_page( 'your-profile' ) ) || !is_page( $pmpro_pages[ 'membership-billing' ] )  ){
+		//Include on certain pages where user is logged out.
+		if( ( !is_admin() ) && (!is_page( $pmpro_pages[ 'billing' ] ) && !is_page( $pmpro_pages[ 'checkout' ] ) ) ){
 			return;
 		}
 
