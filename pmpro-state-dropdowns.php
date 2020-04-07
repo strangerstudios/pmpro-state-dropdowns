@@ -37,7 +37,7 @@ class PMPro_State_Dropdowns {
 	}
 
 	public static function enqueue_styles_scripts(){
-		global $current_user, $user_id, $order_id, $pmpro_default_country;
+		global $current_user, $user_id, $order_id, $pmpro_default_country, $pmpro_pages;
 
 		$the_user_id = $user_id;
 
@@ -55,7 +55,7 @@ class PMPro_State_Dropdowns {
 		}
 			
 
-		if( !is_admin() && empty( $_REQUEST['level'] ) && !is_page( 'your-profile' ) ){
+		if( !is_admin() && empty( $_REQUEST['level'] ) && !is_page( 'your-profile' ) && !is_page( $pmpro_pages['billing'] ) ) {
 			return;
 		}
 
