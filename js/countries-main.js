@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
 
 		//move #bcountry field and label above #bfirstname field and label
 		var bcountryDiv = jQuery('label[for="bcountry"]').closest('div');
-		bcountryDiv.insertBefore('label[for="bfirstname"]').closest('div');
+		bcountryDiv.insertBefore(jQuery('label[for="bfirstname"]').closest('div'));
 	}	
 
 	//pmpro-shipping support
@@ -35,7 +35,7 @@ jQuery(document).ready(function($){
 
 		//move #scountry field and label above #sfirstname field and label
 		var scountryDiv = jQuery('label[for="scountry"]').closest('div');
-		scountryDiv.insertBefore('label[for="sfirstname"]').closest('div');
+		scountryDiv.insertBefore(jQuery('label[for="sfirstname"]').closest('div'));
 	}
 
 	//PMPro orders page support
