@@ -42,7 +42,7 @@ Not all countries may be fully supported regarding the State/Province list. If y
 
 == Changelog ==
 
-= 0.2 - 09-04-2020 =
+= 0.2 - 2020-04-09 =
 * BUG FIX: Fixed issue where state dropdown fields weren't showing/working on billing page.
 * BUG FIX: Fixed issue where fields weren't being added to the correct location on the checkout page via JavaScript.
 
