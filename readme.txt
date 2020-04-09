@@ -14,7 +14,7 @@ Converts state fields on the checkout, edit profile and order pages to dropdowns
 PMPro State Dropdown field integrates with the following areas in Paid Memberships Pro:
 
 * Billing fields (Checkout, edit user and orders page)
-* Shipping Address on Membership Checkout add-on: https://www.paidmembershipspro.com/add-ons/plus-add-ons/shipping-address-membership-checkout/
+* Shipping Address on Membership Checkout add-on: https://www.paidmembershipspro.com/add-ons/shipping-address-membership-checkout/
 
 == Installation ==
 
