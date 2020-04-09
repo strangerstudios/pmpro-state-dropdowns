@@ -34,18 +34,20 @@ class PMPro_State_Dropdowns {
 		//add all hooks & filters here.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles_scripts' ) );
+
+		// Force the long address functionality to ensure that the country fields are always shown.
+		add_filter( 'pmpro_international_addresses', '__return_true' );
+		add_filter( 'pmpro_longform_address', '__return_true' );
 	}
 
 	public static function enqueue_styles_scripts(){
 		global $current_user, $user_id, $order_id, $pmpro_default_country, $pmpro_pages;
 
-		$the_user_id = $user_id;
-
 		//fallback to current user on pages that don't support $user_id variable.
-		if( empty( $the_user_id ) ){
-			$the_user_id = $current_user->ID;
+		if( empty( $user_id ) ){
+			$user_id = $current_user->ID;
 		}
-	
+
 		//we only want to enqueue this on certain pages
 		 $script_name = basename( $_SERVER['SCRIPT_NAME'] );
 		if( is_admin() &&  $script_name !== 'user-edit.php' && 
@@ -53,9 +55,10 @@ class PMPro_State_Dropdowns {
 						  ( empty( $_REQUEST['page'] ) || $_REQUEST['page'] != 'pmpro-addmember' && $_REQUEST['page'] != 'pmpro-orders'  ) ){
 			return;
 		}
-			
 
-		if( !is_admin() && empty( $_REQUEST['level'] ) && !is_page( 'your-profile' ) && !is_page( $pmpro_pages['billing'] ) ) {
+
+		// Check to see if we're on the front-end and not on these specific pages.
+		if ( ! is_admin() && ( ! is_page( 'your-profile' ) && ! is_page( $pmpro_pages['billing'] ) && ! is_page( $pmpro_pages['checkout'] ) ) ) {
 			return;
 		}
 
@@ -75,42 +78,33 @@ class PMPro_State_Dropdowns {
 		if( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ){
 			$morder = new MemberOrder($_GET['order']);
 		}
-
-		//if the page is edit user or profile, change the ID to '#pmpro_bstate' otherwise default to '#bstate'.
-		if( $script_name == 'user-edit.php' || $script_name == 'profile.php' ){
-			$user_saved_countries['state_id'] = 'pmpro_bstate';
-		}else{
-			$user_saved_countries['state_id'] = 'bstate';
-		}
 		
 		//if $morder is not empty (i.e. on the orders page try to get details from REQUEST or USER META )
 		if( empty($morder) ){
 			if( isset( $_REQUEST['bcountry'] ) ){
 				$user_saved_countries['bcountry'] = $_REQUEST['bcountry'];
-			}elseif ( empty( get_user_meta( $the_user_id, 'pmpro_bcountry', true ) ) ) {
+			}elseif ( empty( get_user_meta( $user_id, 'pmpro_bcountry', true ) ) ) {
 				$user_saved_countries['bcountry'] = $pmpro_default_country;
 			}else{
-				$user_saved_countries['bcountry'] = get_user_meta( $the_user_id, 'pmpro_bcountry', true );
+				$user_saved_countries['bcountry'] = get_user_meta( $user_id, 'pmpro_bcountry', true );
 			}
 
 			if( isset( $_REQUEST['bstate'] ) ){
 				$user_saved_countries['bstate'] = $_REQUEST['bstate'];
 			}else{
-				$user_saved_countries['bstate'] = get_user_meta( $the_user_id, 'pmpro_bstate', true );
+				$user_saved_countries['bstate'] = get_user_meta( $user_id, 'pmpro_bstate', true );
 			}
 
 			if( isset( $_REQUEST['scountry'] ) ){
 				$user_saved_countries['scountry'] = $_REQUEST['scountry'];
-			}elseif ( empty( get_user_meta( $the_user_id, 'pmpro_scountry', true ) ) ) {
-				$user_saved_countries['scountry'] = $pmpro_default_country;
 			}else{
-				$user_saved_countries['scountry'] = get_user_meta( $the_user_id, 'pmpro_scountry', true );
+				$user_saved_countries['scountry'] = get_user_meta( $user_id, 'pmpro_scountry', true );
 			}
 
 			if( isset( $_REQUEST['sstate'] ) ){
 				$user_saved_countries['sstate'] = $_REQUEST['sstate'];
 			}else{
-				$user_saved_countries['sstate'] = get_user_meta( $the_user_id, 'pmpro_sstate', true );
+				$user_saved_countries['sstate'] = get_user_meta( $user_id, 'pmpro_sstate', true );
 			}
 		}else{
 			//by default PMPro Orders page only takes billing address and does not display shipping address. Only pass necessary information.
