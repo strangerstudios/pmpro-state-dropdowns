@@ -19,6 +19,7 @@ jQuery(document).ready(function($){
 		//move #bcountry field and label above #bfirstname field and label
 		var bcountryDiv = jQuery('label[for="bcountry"]').closest('div');
 		bcountryDiv.insertBefore(jQuery('label[for="bfirstname"]').closest('div'));
+		window.crs.init()
 	}	
 
 	//pmpro-shipping support
@@ -36,6 +37,7 @@ jQuery(document).ready(function($){
 		//move #scountry field and label above #sfirstname field and label
 		var scountryDiv = jQuery('label[for="scountry"]').closest('div');
 		scountryDiv.insertBefore(jQuery('label[for="sfirstname"]').closest('div'));
+		window.crs.init()
 	}
 
 	//PMPro orders page support
@@ -47,6 +49,7 @@ jQuery(document).ready(function($){
 		jQuery('#billing_state').replaceWith('<select id="billing_state" name="billing_state"></select>');
 		jQuery('#billing_state').attr('data-default-value', pmpro_state_dropdowns.bstate );
 		jQuery("#billing_state").attr('data-value', 'shortcode');
+		window.crs.init()
 	}
 
 });
