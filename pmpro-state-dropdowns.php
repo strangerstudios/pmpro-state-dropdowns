@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro - State Dropdowns Add On
 Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
 Description: Creates an autopopulated field for countries and states/provinces for billing fields.
-Version: 0.2
+Version: 0.3
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com
 License: GPL2 or later
@@ -88,7 +88,7 @@ class PMPro_State_Dropdowns {
 		//if $morder is not empty (i.e. on the orders page try to get details from REQUEST or USER META )
 		if( ! isset($morder) ){
 			if( isset( $_REQUEST['bcountry'] ) ){
-				$user_saved_countries['bcountry'] = $_REQUEST['bcountry'];
+				$user_saved_countries['bcountry'] = sanitize_text_field( $_REQUEST['bcountry'] );
 			}elseif ( empty( get_user_meta( $user_id, 'pmpro_bcountry', true ) ) ) {
 				$user_saved_countries['bcountry'] = $pmpro_default_country;
 			}else{
@@ -96,19 +96,19 @@ class PMPro_State_Dropdowns {
 			}
 
 			if( isset( $_REQUEST['bstate'] ) ){
-				$user_saved_countries['bstate'] = $_REQUEST['bstate'];
+				$user_saved_countries['bstate'] = sanitize_text_field( $_REQUEST['bstate'] );
 			}else{
 				$user_saved_countries['bstate'] = get_user_meta( $user_id, 'pmpro_bstate', true );
 			}
 
 			if( isset( $_REQUEST['scountry'] ) ){
-				$user_saved_countries['scountry'] = $_REQUEST['scountry'];
+				$user_saved_countries['scountry'] = sanitize_text_field( $_REQUEST['scountry'] );
 			}else{
 				$user_saved_countries['scountry'] = get_user_meta( $user_id, 'pmpro_scountry', true );
 			}
 
 			if( isset( $_REQUEST['sstate'] ) ){
-				$user_saved_countries['sstate'] = $_REQUEST['sstate'];
+				$user_saved_countries['sstate'] = sanitize_text_field( $_REQUEST['sstate'] );
 			}else{
 				$user_saved_countries['sstate'] = get_user_meta( $user_id, 'pmpro_sstate', true );
 			}

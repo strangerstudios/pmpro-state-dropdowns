@@ -41,6 +41,12 @@ Existing users that have entered their State/Province before using this add-on m
 Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+= 0.3 - 2021-02-12 =
+* BUG FIX: Fixed a warning where $order variable wasn't present in certain cases like the profile page.
+* BUG FIX/ENHANCEMENT: Fixed Italy state codes from numeric to 2 Letter ISO codes. @mircobabini
+* ENHANCEMENT: Added in localization and default .pot file.
+* ENHANCEMENT: Sanitize values where possible.
+* ENHANCEMENT: Updated Country Region Selection library to latest version.
 
 = 0.2 - 2020-04-09 =
 * BUG FIX: Fixed issue where state dropdown fields weren't showing/working on billing page.
