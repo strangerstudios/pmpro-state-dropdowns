@@ -27,7 +27,7 @@ class PMPro_State_Dropdowns {
 	}
 
 	private function __construct() {
-		add_action( 'init', array( $this, 'load_textdomain' ) );
+		add_action( 'init', array( $this, 'init' ) );
 	}
 
 	function init(){
