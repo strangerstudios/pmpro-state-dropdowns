@@ -28,7 +28,6 @@ class PMPro_State_Dropdowns {
 
 	private function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 	}
 
 	function init(){
@@ -39,15 +38,11 @@ class PMPro_State_Dropdowns {
 		// Force the long address functionality to ensure that the country fields are always shown.
 		add_filter( 'pmpro_international_addresses', '__return_true' );
 		add_filter( 'pmpro_longform_address', '__return_true' );
-	}
 
-	/**
-	 * Load plugin's textdomain for translations
-	 */
-	public function load_textdomain(){
-
+		/**
+		 * Load plugin's textdomain for translations
+		 */
 		load_plugin_textdomain( 'pmpro-state-dropdowns', false, basename( dirname( __FILE__ ) ) . '/languages' );
-
 	}
 
 	public static function enqueue_styles_scripts(){
