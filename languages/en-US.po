@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Package Name\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-12 13:58+0200\n"
+"PO-Revision-Date: 2021-02-12 13:59+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Eazy Po 0.9.5.3\n"
+
+#: pmpro-state-dropdowns.php:79
+msgid "Select country"
+msgstr ""
+
+#: pmpro-state-dropdowns.php:79
+msgid "Select region"
+msgstr ""
+
+#: pmpro-state-dropdowns.php:145
+msgid "View Documentation"
+msgstr ""
+
+#: pmpro-state-dropdowns.php:145
+msgid "Docs"
+msgstr ""
+
+#: pmpro-state-dropdowns.php:146
+msgid "Visit Customer Support Forum"
+msgstr ""
+
+#: pmpro-state-dropdowns.php:146
+msgid "Support"
+msgstr ""

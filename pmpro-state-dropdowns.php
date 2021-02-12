@@ -28,6 +28,7 @@ class PMPro_State_Dropdowns {
 
 	private function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 	}
 
 	function init(){
@@ -38,6 +39,15 @@ class PMPro_State_Dropdowns {
 		// Force the long address functionality to ensure that the country fields are always shown.
 		add_filter( 'pmpro_international_addresses', '__return_true' );
 		add_filter( 'pmpro_longform_address', '__return_true' );
+	}
+
+	/**
+	 * Load plugin's textdomain for translations
+	 */
+	public function load_textdomain(){
+
+		load_plugin_textdomain( 'pmpro-state-dropdowns', false, basename( dirname( __FILE__ ) ) . '/languages' );
+
 	}
 
 	public static function enqueue_styles_scripts(){
@@ -66,6 +76,7 @@ class PMPro_State_Dropdowns {
 		 * Register our JS scripts
 		 */		
 		wp_register_script( 'pmpro-countries', plugins_url( '/js/crs.js', __FILE__ ), array('jquery') );
+		wp_localize_script( 'pmpro-countries', 'pmpro_crs_labels', array( 'country' => __('Select country', 'pmpro-state-dropdowns' ), 'region' => __('Select region', 'pmpro-state-dropdowns' ) ) 		);
 		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery', 'pmpro-countries') );		
 		
 		/**
@@ -131,8 +142,8 @@ function pmpro_state_dropdowns_plugin_row_meta($links, $file) {
 	if(strpos($file, 'pmpro-state-dropdowns.php') !== false)
 	{
 		$new_links = array(
-			'<a href="' . esc_url('https://www.paidmembershipspro.com/add-ons/state-dropdown/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro' ) ) . '">' . __( 'Docs', 'pmpro' ) . '</a>',
-			'<a href="' . esc_url('https://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro' ) ) . '">' . __( 'Support', 'pmpro' ) . '</a>',
+			'<a href="' . esc_url('https://www.paidmembershipspro.com/add-ons/state-dropdown/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Docs', 'pmpro-state-dropdowns' ) . '</a>',
+			'<a href="' . esc_url('https://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Support', 'pmpro-state-dropdowns' ) . '</a>',
 		);
 		$links = array_merge($links, $new_links);
 	}

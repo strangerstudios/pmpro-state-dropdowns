@@ -26,8 +26,8 @@
     "use strict";
 
     var _countryClass = "crs-country";
-    var _defaultCountryStr = "Select country";
-    var _defaultRegionStr = "Select region";
+    var _defaultCountryStr = pmpro_crs_labels.country;
+    var _defaultRegionStr = pmpro_crs_labels.region;
     var _showEmptyCountryOption = true;
     var _showEmptyRegionOption = true;
     var _countries = [];
