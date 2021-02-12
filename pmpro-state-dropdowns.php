@@ -86,7 +86,7 @@ class PMPro_State_Dropdowns {
 		}
 		
 		//if $morder is not empty (i.e. on the orders page try to get details from REQUEST or USER META )
-		if( empty($morder) ){
+		if( ! isset($morder) ){
 			if( isset( $_REQUEST['bcountry'] ) ){
 				$user_saved_countries['bcountry'] = $_REQUEST['bcountry'];
 			}elseif ( empty( get_user_meta( $user_id, 'pmpro_bcountry', true ) ) ) {
