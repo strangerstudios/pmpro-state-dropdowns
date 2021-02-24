@@ -8,7 +8,7 @@ Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com
 License: GPL2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: pmpro-state-dropdown
+Text Domain: pmpro-state-dropdowns
 Network: false
 */
 
