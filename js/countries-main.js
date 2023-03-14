@@ -11,8 +11,13 @@ jQuery(document).ready(function($){
 	if(jQuery('#bcountry').length) {	
 		jQuery('#bcountry').attr('class', 'crs-country').attr('data-region-id', 'bstate').attr('data-default-value', pmpro_state_dropdowns.bcountry);	
 		jQuery('#bcountry').attr('data-value', 'shortcode');
-		
-		jQuery("#bstate").replaceWith('<select id="bstate" name="bstate"></select>');  //convert to dropdown so states can auto-populate
+
+		// Check if #bstate has pmpro_error class.
+		if ( jQuery('#bstate').hasClass('pmpro_error') ) {
+			jQuery('#bstate').replaceWith('<select id="bstate" name="bstate" class="pmpro_error"></select>');  //convert to dropdown so states can auto-populate
+		} else {
+			jQuery('#bstate').replaceWith('<select id="bstate" name="bstate"></select>');  //convert to dropdown so states can auto-populate
+		}
 		jQuery('#bstate').attr('data-default-value', pmpro_state_dropdowns.bstate );
 		jQuery('#bstate').attr('data-value', 'shortcode');
 
