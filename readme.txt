@@ -2,7 +2,7 @@
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, states, counties, provences
 Requires at least: 4
-Tested up to: 5.4
+Tested up to: 6.2
 Stable tag: 0.2
 
 Converts state fields on the checkout, edit profile and order pages to dropdowns autopopulated based on the selected country. 
