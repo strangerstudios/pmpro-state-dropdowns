@@ -16,11 +16,11 @@ jQuery(document).ready(function($){
 		
 		var selected_states = pmprosd_states[pmpro_state_dropdowns.bcountry];
 		if( typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0 ) {
-			jQuery("#bstate").replaceWith('<select id="bstate" name="bstate"></select>');  //convert to dropdown so states can auto-populate
+			jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_error"></select>');  //convert to dropdown so states can auto-populate
 
 			pmprosd_populate_dropdown( "[name='bstate']", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.bstate );
 		} else {
-			jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate"/>');
+			jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error"/>');
 		}
 
 	}
@@ -29,10 +29,10 @@ jQuery(document).ready(function($){
 		var selected_country = jQuery(this).val();
 		var selected_states = pmprosd_states[selected_country];
 		if( typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0 ) {
-			jQuery("[name='bstate']").replaceWith('<select id="bstate" name="bstate"></select>');  //convert to dropdown so states can auto-populate
+			jQuery("[name='bstate']").replaceWith('<select id="bstate" name="bstate" class="pmpro_error"></select>');  //convert to dropdown so states can auto-populate
 			pmprosd_populate_dropdown( "[name='bstate']", selected_states, pmpro_state_labels.region, '' );
 		} else {
-			jQuery("[name='bstate']").replaceWith('<input type="text" id="bstate" name="bstate"/>');
+			jQuery("[name='bstate']").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error"/>');
 		}
 	});
 
@@ -40,7 +40,7 @@ jQuery(document).ready(function($){
 	if(jQuery('#scountry').length) {
 
 		//convert Shipping Country to dropdown.
-		jQuery('#scountry').replaceWith('<select id="scountry" name="scountry"></select>'); 
+		jQuery('#scountry').replaceWith('<select id="scountry" name="scountry" class="pmpro_error"></select>'); 
 		pmprosd_populate_dropdown( "#scountry", pmprosd_countries, pmpro_state_labels.country, pmpro_state_dropdowns.scountry );
 
 		//move #scountry field and label above #sfirstname field and label
@@ -49,10 +49,10 @@ jQuery(document).ready(function($){
 		
 		var selected_states = pmprosd_states[pmpro_state_dropdowns.scountry];
 		if( typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0 ) {
-			jQuery('#sstate').replaceWith('<select id="sstate" name="sstate"></select>');  //convert to dropdown so states can auto-populate   
+			jQuery('#sstate').replaceWith('<select id="sstate" name="sstate" class="pmpro_error"></select>');  //convert to dropdown so states can auto-populate   
 			pmprosd_populate_dropdown( "[name='sstate']", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate );
 		} else {
-			jQuery("#bstate").replaceWith('<inpput type="text" id="sstate" name="sstate"/>');
+			jQuery("#bstate").replaceWith('<inpput type="text" id="sstate" name="sstate" class="pmpro_error"/>');
 		}
 
 	}
@@ -61,10 +61,10 @@ jQuery(document).ready(function($){
 		var selected_country = jQuery(this).val();
 		var selected_states = pmprosd_states[selected_country];
 		if( typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0 ) {
-			jQuery("[name='sstate']").replaceWith('<select id="sstate" name="sstate"></select>');  //convert to dropdown so states can auto-populate   
+			jQuery("[name='sstate']").replaceWith('<select id="sstate" name="sstate" class="pmpro_error"></select>');  //convert to dropdown so states can auto-populate   
 			pmprosd_populate_dropdown( "[name='sstate']", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate );
 		} else {
-			jQuery("[name='sstate']").replaceWith('<inpput type="text" id="sstate" name="sstate"/>');
+			jQuery("[name='sstate']").replaceWith('<inpput type="text" id="sstate" name="sstate" class="pmpro_error"/>');
 		}
 	});
 
