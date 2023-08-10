@@ -1,4 +1,5 @@
 <?php
+// Data pulled from https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/i18n/states.php
 
 global $pmprosd_states;
 
