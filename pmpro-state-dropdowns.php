@@ -14,6 +14,8 @@ Network: false
 
 defined( 'ABSPATH' ) or exit;
 
+require_once dirname( __FILE__ ) . '/includes/states.php';
+
 class PMPro_State_Dropdowns {
 
 	private static $_instance = null;
@@ -70,10 +72,11 @@ class PMPro_State_Dropdowns {
 		/**
 		 * Register our JS scripts
 		 */		
-		wp_register_script( 'pmpro-countries', plugins_url( '/js/crs.js', __FILE__ ), array('jquery') );
-		wp_localize_script( 'pmpro-countries', 'pmpro_crs_labels', array( 'country' => __('Select country', 'pmpro-state-dropdowns' ), 'region' => __('Select region', 'pmpro-state-dropdowns' ) ) 		);
-		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery', 'pmpro-countries') );		
-		
+		global $pmprosd_states, $pmpro_countries;
+		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery') );		
+		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_labels', array( 'country' => __('Select country', 'pmpro-state-dropdowns' ), 'region' => __('Select region', 'pmpro-state-dropdowns' ) ) 		);
+		wp_localize_script( 'pmpro-countries-main', 'pmprosd_states', $pmprosd_states );
+		wp_localize_script( 'pmpro-countries-main', 'pmprosd_countries', $pmpro_countries );
 		/**
 		 * Data for localize script, get user meta from the user and load it into fields using jquery from countries-main.js
 		 * @internal: Add in a nonce for security reasons.
