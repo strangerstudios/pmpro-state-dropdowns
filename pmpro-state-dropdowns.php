@@ -74,7 +74,7 @@ class PMPro_State_Dropdowns {
 		 */		
 		global $pmprosd_states, $pmpro_countries;
 		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery') );		
-		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_labels', array( 'country' => __( 'Select country', 'pmpro-state-dropdowns' ), 'region' => __( 'Select region', 'pmpro-state-dropdowns' ) ) 		);
+		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_labels', array( 'country' => __( 'Select country', 'pmpro-state-dropdowns' ), 'region' => __( 'Select state', 'pmpro-state-dropdowns' ) ) 		);
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_states', $pmprosd_states );
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_countries', $pmpro_countries );
 		/**

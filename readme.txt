@@ -44,6 +44,7 @@ Not all countries may be fully supported regarding the State/Province list. If y
 = 0.4 - 2023-08-18 =
 * ENHANCEMENT: Reworked the state dropdown logic to be more efficient and easier to maintain. (@JarrydLong)
 * ENHANCEMENT: Added improved error handling on the empty fields when required to highlight error fields. (@dparker1005)
+* BUG FIX: Fixed incorrect text domain which would cause issues with translations. (@mircobabini)
 
 = 0.3 - 2021-02-12 =
 * BUG FIX: Fixed a warning where $order variable wasn't present in certain cases like the profile page.
