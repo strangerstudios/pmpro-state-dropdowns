@@ -17,8 +17,11 @@ jQuery(document).ready(function($){
 		jQuery('#bstate').attr('data-value', 'shortcode');
 
 		//move #bcountry field and label above #bfirstname field and label
-		var bcountryDiv = jQuery('label[for="bcountry"]').closest('div');
-		bcountryDiv.insertBefore(jQuery('label[for="bfirstname"]').closest('div'));
+		if (pmpro_state_dropdowns.bcountry_before_field) {
+			var bcountryDiv = jQuery('label[for="bcountry"]').closest('div');
+			bcountryDiv.insertBefore(jQuery('label[for="' + pmpro_state_dropdowns.bcountry_before_field + '"]').closest('div'));
+		}
+
 		window.crs.init()
 	}	
 
@@ -35,8 +38,11 @@ jQuery(document).ready(function($){
 		jQuery("#sstate").attr('data-value', 'shortcode');
 
 		//move #scountry field and label above #sfirstname field and label
-		var scountryDiv = jQuery('label[for="scountry"]').closest('div');
-		scountryDiv.insertBefore(jQuery('label[for="sfirstname"]').closest('div'));
+		if (pmpro_state_dropdowns.scountry_before_field) {
+			var scountryDiv = jQuery('label[for="scountry"]').closest('div');
+			scountryDiv.insertBefore(jQuery('label[for="' + pmpro_state_dropdowns.scountry_before_field + '"]').closest('div'));
+		}
+
 		window.crs.init()
 	}
 

@@ -118,6 +118,9 @@ class PMPro_State_Dropdowns {
 			$user_saved_countries['bstate'] = $morder->billing->state;			
 		}	
 
+		$user_saved_countries['bcountry_before_field'] = apply_filters( 'pmpro_state_dropdowns_bcountry_before_field', 'bfirstname' );
+		$user_saved_countries['scountry_before_field'] = apply_filters( 'pmpro_state_dropdowns_scountry_before_field', 'sfirstname' );
+
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_dropdowns', $user_saved_countries );
 		
 		/**
