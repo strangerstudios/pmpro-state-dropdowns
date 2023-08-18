@@ -2,8 +2,8 @@
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, states, counties, provences
 Requires at least: 4
-Tested up to: 6.2
-Stable tag: 0.2
+Tested up to: 6.3
+Stable tag: 0.4
 
 Converts state fields on the checkout, edit profile and order pages to dropdowns autopopulated based on the selected country. 
 
@@ -41,6 +41,10 @@ Existing users that have entered their State/Province before using this add-on m
 Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+= 0.4 - 2023-08-18 =
+* ENHANCEMENT: Reworked the state dropdown logic to be more efficient and easier to maintain. (@JarrydLong)
+* ENHANCEMENT: Added improved error handling on the empty fields when required to highlight error fields. (@dparker1005)
+
 = 0.3 - 2021-02-12 =
 * BUG FIX: Fixed a warning where $order variable wasn't present in certain cases like the profile page.
 * BUG FIX/ENHANCEMENT: Fixed Italy state codes from numeric to 2 Letter ISO codes. @mircobabini

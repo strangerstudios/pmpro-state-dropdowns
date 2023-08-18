@@ -1,12 +1,11 @@
 <?php
 // Data pulled from https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/i18n/states.php
-
 global $pmprosd_states;
 
 /**
  * Allow filtering the country/state array. 
  *
- * @since TBD
+ * @since 0.4
  *
  * @param array An associative array of countries and their respective states
  */

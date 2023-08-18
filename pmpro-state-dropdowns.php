@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro - State Dropdowns Add On
 Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
 Description: Creates an autopopulated field for countries and states/provinces for billing fields.
-Version: 0.3
+Version: 0.4
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com
 License: GPL2 or later
@@ -74,7 +74,7 @@ class PMPro_State_Dropdowns {
 		 */		
 		global $pmprosd_states, $pmpro_countries;
 		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery') );		
-		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_labels', array( 'country' => __('Select country', 'pmpro-state-dropdowns' ), 'region' => __('Select region', 'pmpro-state-dropdowns' ) ) 		);
+		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_labels', array( 'country' => __( 'Select country', 'pmpro-state-dropdowns' ), 'region' => __( 'Select region', 'pmpro-state-dropdowns' ) ) 		);
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_states', $pmprosd_states );
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_countries', $pmpro_countries );
 		/**
@@ -84,7 +84,7 @@ class PMPro_State_Dropdowns {
 		$user_saved_countries = array();
 
 		//check to see if user is  on the admin page.
-		if( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ){
+		if ( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ) {
 			$morder = new MemberOrder($_GET['order']);
 		}
 		
