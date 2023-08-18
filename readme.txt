@@ -41,6 +41,9 @@ Existing users that have entered their State/Province before using this add-on m
 Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+= 0.4.1 - 2023-08-18 =
+* BUG FIX: Fixed an issue with the Shipping Address Add On showing the field was an error when it wasn't.
+
 = 0.4 - 2023-08-18 =
 * ENHANCEMENT: Reworked the state dropdown logic to be more efficient and easier to maintain. (@JarrydLong)
 * ENHANCEMENT: Added improved error handling on the empty fields when required to highlight error fields. (@dparker1005)
