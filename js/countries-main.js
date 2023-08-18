@@ -56,7 +56,10 @@ jQuery(document).ready(function($){
 	if(jQuery('#scountry').length) {
 
 		//convert Shipping Country to dropdown.
-		jQuery('#scountry').replaceWith('<select id="scountry" name="scountry" class="pmpro_error"></select>'); 
+		if (jQuery("[name='scountry']").hasClass('pmpro_error')) {
+			jQuery('#scountry').replaceWith('<select id="scountry" name="scountry" class="pmpro_error"></select>');
+		}
+		
 		pmprosd_populate_dropdown( "#scountry", pmprosd_countries, pmpro_state_labels.country, pmpro_state_dropdowns.scountry );
 
 		//move #scountry field and label above #sfirstname field and label
@@ -70,12 +73,12 @@ jQuery(document).ready(function($){
 			} else {
 				jQuery('#sstate').replaceWith('<select id="sstate" name="sstate" ></select>');  //convert to dropdown so states can auto-populate   
 			}
-			pmprosd_populate_dropdown( "[name='sstate']", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate );
+			pmprosd_populate_dropdown( "#sstate", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate );
 		} else {
 			if ( jQuery("#sstate").hasClass('pmpro_error') ) {
-				jQuery("#sstate").replaceWith('<inpput type="text" id="sstate" name="sstate" class="pmpro_error"/>');
+				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate" class="pmpro_error"/>');
 			} else {
-				jQuery("#sstate").replaceWith('<inpput type="text" id="sstate" name="sstate">');
+				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate">');
 			}
 		}
 
@@ -93,9 +96,9 @@ jQuery(document).ready(function($){
 			pmprosd_populate_dropdown( "[name='sstate']", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate );
 		} else {
 			if ( jQuery("[name='sstate']").hasClass('pmpro_error') ) {
-				jQuery("[name='sstate']").replaceWith('<inpput type="text" id="sstate" name="sstate" class="pmpro_error"/>');
+				jQuery("[name='sstate']").replaceWith('<input type="text" id="sstate" name="sstate" class="pmpro_error"/>');
 			} else {
-				jQuery("[name='sstate']").replaceWith('<inpput type="text" id="sstate" name="sstate"/>');
+				jQuery("[name='sstate']").replaceWith('<input type="text" id="sstate" name="sstate"/>');
 			}
 		}
 	});
