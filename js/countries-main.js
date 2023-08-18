@@ -54,11 +54,6 @@ jQuery(document).ready(function($){
 
 	//pmpro-shipping support
 	if(jQuery('#scountry').length) {
-
-		//convert Shipping Country to dropdown.
-		if (jQuery("[name='scountry']").hasClass('pmpro_error')) {
-			jQuery('#scountry').replaceWith('<select id="scountry" name="scountry" class="pmpro_error"></select>');
-		}
 		
 		pmprosd_populate_dropdown( "#scountry", pmprosd_countries, pmpro_state_labels.country, pmpro_state_dropdowns.scountry );
 
