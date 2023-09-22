@@ -14,20 +14,21 @@ jQuery(document).ready(function($){
 		var bcountryDiv = jQuery('label[for="bcountry"]').closest('div');
 		bcountryDiv.insertBefore(jQuery('label[for="bfirstname"]').closest('div'));
 		
-		var selected_states = pmprosd_states[pmpro_state_dropdowns.bcountry];
-		if( typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0 ) {
+		var selected_country = pmprosd_states[pmpro_state_dropdowns.bcountry];
+		if( typeof selected_country !== 'undefined' && jQuery(selected_country).length > 0 ) {
 			if ( jQuery('#bstate').hasClass('pmpro_error') ) {
 				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_error"></select>');  //convert to dropdown so states can auto-populate
-			} else {
+			} else {				
 				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate"></select>');  //convert to dropdown so states can auto-populate
 			}
 
 			pmprosd_populate_dropdown( "[name='bstate']", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.bstate );
 		} else {
+			var selected_state = ( typeof pmpro_state_dropdowns.bstate !== 'undefined' ) ? pmpro_state_dropdowns.bstate : "";
 			if ( jQuery('#bstate').hasClass('pmpro_error') ) {
-				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error"/>');
+				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error" value="'+selected_state+'"/>');
 			} else {
-				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate"/>');
+				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" value="'+selected_state+'"/>');
 			}
 		}
 
@@ -44,10 +45,11 @@ jQuery(document).ready(function($){
 			}
 			pmprosd_populate_dropdown( "[name='bstate']", selected_states, pmpro_state_labels.region, '' );
 		} else {
-			if ( jQuery("[name='bstate']").hasClass('pmpro_error') ) {
-				jQuery("[name='bstate']").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error"/>');
+			var selected_state = ( typeof pmpro_state_dropdowns.bstate !== 'undefined' ) ? pmpro_state_dropdowns.bstate : "";
+			if ( jQuery('#bstate').hasClass('pmpro_error') ) {
+				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error" value="'+selected_state+'"/>');
 			} else {
-				jQuery("[name='bstate']").replaceWith('<input type="text" id="bstate" name="bstate"/>');
+				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" value="'+selected_state+'"/>');
 			}
 		}
 	});
@@ -70,10 +72,11 @@ jQuery(document).ready(function($){
 			}
 			pmprosd_populate_dropdown( "#sstate", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate );
 		} else {
+			var selected_state = ( typeof pmpro_state_dropdowns.sstate !== 'undefined' ) ? pmpro_state_dropdowns.sstate : "";
 			if ( jQuery("#sstate").hasClass('pmpro_error') ) {
-				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate" class="pmpro_error"/>');
+				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate" class="pmpro_error" value="'+selected_state+'" />');
 			} else {
-				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate">');
+				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate" value="'+selected_state+'" />');
 			}
 		}
 
@@ -90,10 +93,11 @@ jQuery(document).ready(function($){
 			}
 			pmprosd_populate_dropdown( "[name='sstate']", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate );
 		} else {
-			if ( jQuery("[name='sstate']").hasClass('pmpro_error') ) {
-				jQuery("[name='sstate']").replaceWith('<input type="text" id="sstate" name="sstate" class="pmpro_error"/>');
+			var selected_state = ( typeof pmpro_state_dropdowns.sstate !== 'undefined' ) ? pmpro_state_dropdowns.sstate : "";
+			if ( jQuery("#sstate").hasClass('pmpro_error') ) {
+				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate" class="pmpro_error" value="'+selected_state+'" />');
 			} else {
-				jQuery("[name='sstate']").replaceWith('<input type="text" id="sstate" name="sstate"/>');
+				jQuery("#sstate").replaceWith('<input type="text" id="sstate" name="sstate" value="'+selected_state+'" />');
 			}
 		}
 	});
