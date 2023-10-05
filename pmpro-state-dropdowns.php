@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro - State Dropdowns Add On
 Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
 Description: Creates an autopopulated field for countries and states/provinces for billing fields.
-Version: 0.4.2
+Version: 0.4.3
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com
 License: GPL2 or later
