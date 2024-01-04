@@ -1937,6 +1937,13 @@ $pmprosd_states = apply_filters( 'pmprosd_states', array(
 	),
 	'RW' => array(),
 	'SE' => array(),
+	'SG' => array(
+		'SG-01' => __( 'Central Singapore', 'pmpro-state-dropdowns' ),
+		'SG-02' => __( 'North East', 'pmpro-state-dropdowns' ),
+		'SG-03' => __( 'North West', 'pmpro-state-dropdowns' ),
+		'SG-04' => __( 'South East', 'pmpro-state-dropdowns' ),
+		'SG-05' => __( 'South West', 'pmpro-state-dropdowns' )
+	),
 	'UA' => array( // Ukrainian oblasts. https://github.com/unicode-org/cldr/blob/release-42/common/subdivisions/en.xml#L5243.
 		'UA05' => __( 'Vinnychchyna', 'pmpro-state-dropdowns' ),
 		'UA07' => __( 'Volyn', 'pmpro-state-dropdowns' ),
