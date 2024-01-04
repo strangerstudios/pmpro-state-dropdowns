@@ -65,7 +65,7 @@ class PMPro_State_Dropdowns {
 
 
 		// Check to see if we're on the front-end and not on these specific pages.
-		if ( ! is_admin() && ( ! is_page( 'your-profile' ) && ! is_page( $pmpro_pages['billing'] ) && ! is_page( $pmpro_pages['checkout'] ) ) ) {
+		if ( ! is_admin() && ( ! is_page( 'your-profile' ) && ! is_page( $pmpro_pages['billing'] ) && ! pmpro_is_checkout() ) ) {
 			return;
 		}
 
