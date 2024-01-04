@@ -1,7 +1,12 @@
 <?php
 // Data pulled from https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/i18n/states.php
-global $pmprosd_states;
 
+/**
+ * Function to get all states for a given country.
+ *
+ * @return array $pmprosd_states An associative array of countries and their respective states/provinces/counties.
+ */
+function pmprosd_states() {
 /**
  * Allow filtering the country/state array. 
  *
@@ -2232,3 +2237,6 @@ $pmprosd_states = apply_filters( 'pmprosd_states', array(
 		'ZM-10' => __( 'Muchinga', 'pmpro-state-dropdowns' ),
 	),
 ) );
+
+	return $pmprosd_states;
+}
