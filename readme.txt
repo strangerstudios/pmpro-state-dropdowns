@@ -1,9 +1,9 @@
 === Paid Memberships Pro - State Dropdowns Add On ===
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, states, counties, provences
-Requires at least: 5
-Tested up to: 6.3
-Stable tag: 0.4.3
+Requires at least: 5.0
+Tested up to: 6.4.2
+Stable tag: 0.4.4
 
 Converts state fields on the checkout, edit profile and order pages to dropdowns autopopulated based on the selected country. 
 
@@ -41,6 +41,13 @@ Existing users that have entered their State/Province before using this add-on m
 Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+= 0.4.4 - 2024-01-05 =
+ * ENHANCEMENT: Moved Kosovo out of state options for Serbia. (@andrewlimaza)
+ * ENHANCEMENT: Added states for Singapore and United Kingdom. (@andrewlimaza, @ipokkel)
+ * ENHANCEMENT: Adjusted how we detect we're on the checkout page to be more reliable. (@andrewlimaza)
+ * REFACTOR: Moved away from using a PHP global for state options and moved to a helper function to get a list of all states for all countries `pmprosd_states()` (@andrewlimaza)
+ * BUG FIX: Fixed an issue where the `pmpro_default_country` would not be set for the Shipping Add On. (@andrewlimaza)
+ 
 = 0.4.3 - 2023-10-05 =
 * BUG FIX: Fixed an issue where the states/provinces dropdown wouldn't populate on page load.
 
