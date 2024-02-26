@@ -50,6 +50,10 @@ class PMPro_State_Dropdowns {
 	public static function enqueue_styles_scripts(){
 		global $current_user, $user_id, $order_id, $pmpro_default_country, $pmpro_pages;
 
+		if( ! function_exists( 'pmpro_is_checkout' ) ) {
+			return;
+		}
+
 		//fallback to current user on pages that don't support $user_id variable.
 		if( empty( $user_id ) ){
 			$user_id = $current_user->ID;
