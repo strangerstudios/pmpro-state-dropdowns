@@ -39,7 +39,11 @@ class PMPro_State_Dropdowns {
 
 		// Force the long address functionality to ensure that the country fields are always shown.
 		add_filter( 'pmpro_international_addresses', '__return_true' );
-		add_filter( 'pmpro_longform_address', '__return_true' );
+
+		// Only add this in for Pre 3.1 versions of PMPro.
+		if ( defined( 'PMPRO_VERSION' ) && version_compare( PMPRO_VERSION, '3.1', '<' ) ) {
+			add_filter( 'pmpro_longform_address', '__return_true' );
+		}	
 
 		/**
 		 * Load plugin's textdomain for translations
