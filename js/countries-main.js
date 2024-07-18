@@ -14,9 +14,9 @@ jQuery(document).ready(function ($) {
 	//make sure we have a bcountry field to work with
 	if (jQuery('#bcountry').length) {
 
-		//move #bcountry field and label above #bfirstname field and label
+		// Move #bcountry field and label above #bcity field and label.
 		var bcountryDiv = jQuery('label[for="bcountry"]').closest('div');
-		bcountryDiv.insertBefore(jQuery('label[for="bfirstname"]').closest('div'));
+		bcountryDiv.insertBefore(jQuery('label[for="bcity"]').closest('div'));
 
 		// Get the states for a specific country.
 		var states_for_countries = pmprosd_states[pmpro_state_dropdowns.bcountry];
@@ -62,8 +62,8 @@ jQuery(document).ready(function ($) {
 	//pmpro-shipping support
 	if (jQuery('#pmpro_scountry').length) {
 
-		// Move Shipping Country field above state for better UX.
-		jQuery('#pmpro_scountry_div').insertBefore(jQuery('#pmpro_sstate_div').closest('div'));
+		// Move Shipping Country field above city for better UX.
+		jQuery('#pmpro_scountry_div').insertBefore(jQuery('#pmpro_scity_div').closest('div'));
 
 		pmprosd_populate_dropdown("#pmpro_scountry", pmprosd_countries, pmpro_state_labels.country, pmpro_state_dropdowns.scountry);
 
