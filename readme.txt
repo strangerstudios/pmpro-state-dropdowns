@@ -4,6 +4,8 @@ Tags: paid memberships pro, pmpro, states, counties, provences
 Requires at least: 5.2
 Tested up to: 6.6
 Stable tag: 0.5
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Converts state fields on the checkout, edit profile and order pages to dropdowns autopopulated based on the selected country. 
 

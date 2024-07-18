@@ -1,16 +1,14 @@
 <?php
-/*
-Plugin Name: Paid Memberships Pro - State Dropdowns
-Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
-Description: Creates an autopopulated field for countries and states/provinces for billing fields.
-Version: 0.5
-Author: Paid Memberships Pro
-Author URI: https://www.paidmembershipspro.com
-License: GPL2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: pmpro-state-dropdowns
-Network: false
-*/
+/**
+ * Plugin Name: Paid Memberships Pro - State Dropdowns
+ * Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
+ * Description: Creates an autopopulated field for countries and states/provinces for billing fields.
+ * Version: 0.5
+ * Author: Paid Memberships Pro
+ * Author URI: https://www.paidmembershipspro.com
+ * Text Domain: pmpro-state-dropdowns
+ * Network: false
+ */
 
 defined( 'ABSPATH' ) or exit;
 
