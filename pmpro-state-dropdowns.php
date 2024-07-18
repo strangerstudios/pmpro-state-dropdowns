@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Paid Memberships Pro - State Dropdowns Add On
+Plugin Name: Paid Memberships Pro - State Dropdowns
 Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
 Description: Creates an autopopulated field for countries and states/provinces for billing fields.
-Version: 0.4.4
+Version: 0.5
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com
 License: GPL2 or later
@@ -13,6 +13,8 @@ Network: false
 */
 
 defined( 'ABSPATH' ) or exit;
+
+define( 'PMPROSD_VERSION', '0.5' );
 
 require_once dirname( __FILE__ ) . '/includes/states.php';
 
@@ -77,7 +79,7 @@ class PMPro_State_Dropdowns {
 		 * Register our JS scripts
 		 */		
 		global $pmpro_countries;
-		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery') );		
+		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery'), PMPROSD_VERSION, array( 'in_footer' => true ) );
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_labels', array( 'country' => __( 'Select country', 'pmpro-state-dropdowns' ), 'region' => __( 'Select state', 'pmpro-state-dropdowns' ) ) 		);
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_states', pmprosd_states() );
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_countries', $pmpro_countries );
@@ -147,7 +149,7 @@ function pmpro_state_dropdowns_plugin_row_meta($links, $file) {
 	{
 		$new_links = array(
 			'<a href="' . esc_url('https://www.paidmembershipspro.com/add-ons/state-dropdown/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Docs', 'pmpro-state-dropdowns' ) . '</a>',
-			'<a href="' . esc_url('https://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Support', 'pmpro-state-dropdowns' ) . '</a>',
+			'<a href="' . esc_url('https://www.paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Support', 'pmpro-state-dropdowns' ) . '</a>',
 		);
 		$links = array_merge($links, $new_links);
 	}
