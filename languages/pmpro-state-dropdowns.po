@@ -1,17 +1,17 @@
 # Copyright (C) 2024 Paid Memberships Pro
-# This file is distributed under the GPL2 or later.
+# This file is distributed under the same license as the Paid Memberships Pro - State Dropdowns plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Paid Memberships Pro - State Dropdowns Add On 0.4.4\n"
+"Project-Id-Version: Paid Memberships Pro - State Dropdowns 0.5\n"
 "Report-Msgid-Bugs-To: info@paidmembershipspro.com\n"
 "Last-Translator: Paid Memberships Pro <info@paidmembershipspro.com>\n"
 "Language-Team: Paid Memberships Pro <info@paidmembershipspro.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-05T10:24:18+00:00\n"
+"POT-Creation-Date: 2024-07-18T17:32:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: pmpro-state-dropdowns\n"
 
 #. Plugin Name of the plugin
@@ -19,18 +19,22 @@ msgid "Paid Memberships Pro - State Dropdowns Add On"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: pmpro-state-dropdowns.php
 msgid "https://www.paidmembershipspro.com/add-ons/state-dropdown/"
 msgstr ""
 
 #. Description of the plugin
+#: pmpro-state-dropdowns.php
 msgid "Creates an autopopulated field for countries and states/provinces for billing fields."
 msgstr ""
 
 #. Author of the plugin
+#: pmpro-state-dropdowns.php
 msgid "Paid Memberships Pro"
 msgstr ""
 
 #. Author URI of the plugin
+#: pmpro-state-dropdowns.php
 msgid "https://www.paidmembershipspro.com"
 msgstr ""
 
@@ -9633,6 +9637,7 @@ msgid "Muchinga"
 msgstr ""
 
 #: pmpro-state-dropdowns.php:77
+#: pmpro-state-dropdowns.php:85
 msgid "Select country"
 msgstr ""
 
@@ -9642,25 +9647,30 @@ msgstr ""
 
 #: pmpro-state-dropdowns.php:143
 #: pmpro-state-dropdowns.php:145
+#: pmpro-state-dropdowns.php:153
 msgid "View Documentation"
 msgstr ""
 
 #: pmpro-state-dropdowns.php:143
 #: pmpro-state-dropdowns.php:145
+#: pmpro-state-dropdowns.php:153
 msgid "Docs"
 msgstr ""
 
 #: pmpro-state-dropdowns.php:144
 #: pmpro-state-dropdowns.php:146
+#: pmpro-state-dropdowns.php:154
 msgid "Visit Customer Support Forum"
 msgstr ""
 
 #: pmpro-state-dropdowns.php:144
 #: pmpro-state-dropdowns.php:146
+#: pmpro-state-dropdowns.php:154
 msgid "Support"
 msgstr ""
 
 #: pmpro-state-dropdowns.php:77
+#: pmpro-state-dropdowns.php:85
 msgid "Select state"
 msgstr ""
 
@@ -9674,4 +9684,9 @@ msgstr ""
 
 #: includes/states.php:1942
 msgid "South West"
+msgstr ""
+
+#. Plugin Name of the plugin
+#: pmpro-state-dropdowns.php
+msgid "Paid Memberships Pro - State Dropdowns"
 msgstr ""
