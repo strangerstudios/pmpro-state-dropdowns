@@ -1,18 +1,18 @@
 <?php
-/*
-Plugin Name: Paid Memberships Pro - State Dropdowns Add On
-Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
-Description: Creates an autopopulated field for countries and states/provinces for billing fields.
-Version: 0.4.4
-Author: Paid Memberships Pro
-Author URI: https://www.paidmembershipspro.com
-License: GPL2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: pmpro-state-dropdowns
-Network: false
-*/
+/**
+ * Plugin Name: Paid Memberships Pro - State Dropdowns
+ * Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
+ * Description: Creates an autopopulated field for countries and states/provinces for billing fields.
+ * Version: 0.5
+ * Author: Paid Memberships Pro
+ * Author URI: https://www.paidmembershipspro.com
+ * Text Domain: pmpro-state-dropdowns
+ * Network: false
+ */
 
 defined( 'ABSPATH' ) or exit;
+
+define( 'PMPROSD_VERSION', '0.5' );
 
 require_once dirname( __FILE__ ) . '/includes/states.php';
 
@@ -39,7 +39,11 @@ class PMPro_State_Dropdowns {
 
 		// Force the long address functionality to ensure that the country fields are always shown.
 		add_filter( 'pmpro_international_addresses', '__return_true' );
-		add_filter( 'pmpro_longform_address', '__return_true' );
+
+		// Only add this in for Pre 3.1 versions of PMPro.
+		if ( defined( 'PMPRO_VERSION' ) && version_compare( PMPRO_VERSION, '3.1', '<' ) ) {
+			add_filter( 'pmpro_longform_address', '__return_true' );
+		}	
 
 		/**
 		 * Load plugin's textdomain for translations
@@ -77,7 +81,7 @@ class PMPro_State_Dropdowns {
 		 * Register our JS scripts
 		 */		
 		global $pmpro_countries;
-		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery') );		
+		wp_register_script( 'pmpro-countries-main', plugins_url( '/js/countries-main.js', __FILE__ ), array('jquery'), PMPROSD_VERSION, array( 'in_footer' => true ) );
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_labels', array( 'country' => __( 'Select country', 'pmpro-state-dropdowns' ), 'region' => __( 'Select state', 'pmpro-state-dropdowns' ) ) 		);
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_states', pmprosd_states() );
 		wp_localize_script( 'pmpro-countries-main', 'pmprosd_countries', $pmpro_countries );
@@ -147,7 +151,7 @@ function pmpro_state_dropdowns_plugin_row_meta($links, $file) {
 	{
 		$new_links = array(
 			'<a href="' . esc_url('https://www.paidmembershipspro.com/add-ons/state-dropdown/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Docs', 'pmpro-state-dropdowns' ) . '</a>',
-			'<a href="' . esc_url('https://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Support', 'pmpro-state-dropdowns' ) . '</a>',
+			'<a href="' . esc_url('https://www.paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-state-dropdowns' ) ) . '">' . __( 'Support', 'pmpro-state-dropdowns' ) . '</a>',
 		);
 		$links = array_merge($links, $new_links);
 	}
