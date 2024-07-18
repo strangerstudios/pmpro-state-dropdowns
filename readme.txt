@@ -44,9 +44,10 @@ Not all countries may be fully supported regarding the State/Province list. If y
 
 == Changelog ==
 = 0.5 - 2024-07-18 =
-* ENHANCEMENT: Updated the frontend UI for compatibility with PMPro v3.1.
-* ENHANCEMENT: Now moving the Country field before the City field for better UX.
-* BUG FIX: Only using the `pmpro_longform_address` filter on pre-v3.1+ versions of PMPro (now the default behavior).
+* ENHANCEMENT: Updated the frontend UI for compatibility with PMPro v3.1. #64 (@andrewlimaza)
+* ENHANCEMENT: Now moving the Country field before the City field for better UX. #64 (@andrewlimaza)
+* BUG FIX: Only using the `pmpro_longform_address` filter on pre-v3.1+ versions of PMPro (now the default behavior). #64 (@andrewlimaza)
+* BUG FIX: Fixed error when the core PMPro plugin is not active. #61 (@JarrydLong)
 
 = 0.4.4 - 2024-01-05 =
  * ENHANCEMENT: Moved Kosovo out of state options for Serbia. (@andrewlimaza)
