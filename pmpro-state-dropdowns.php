@@ -65,7 +65,8 @@ class PMPro_State_Dropdowns {
 
 		//we only want to enqueue this on certain pages
 		 $script_name = basename( $_SERVER['SCRIPT_NAME'] );
-		if( is_admin() &&  $script_name !== 'user-edit.php' && 
+		if( is_admin() && ( isset( $_REQUEST['page'] ) && $_REQUEST['page'] !== 'pmpro-paymentsettings' ) &&
+			is_admin() &&  $script_name !== 'user-edit.php' &&
 						   $script_name !== 'profile.php' && 
 						  ( empty( $_REQUEST['page'] ) || $_REQUEST['page'] != 'pmpro-addmember' && $_REQUEST['page'] != 'pmpro-orders'  ) ){
 			return;
