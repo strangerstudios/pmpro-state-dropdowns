@@ -2,8 +2,8 @@
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, states, counties, provences
 Requires at least: 5.2
-Tested up to: 6.6
-Stable tag: 0.5
+Tested up to: 6.8
+Stable tag: 0.5.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,10 @@ Existing users that have entered their State/Province before using this add-on m
 Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+= 0.5.1 - 2025-03-14 =
+* BUG FIX/ENHANCEMENT: Updated the billing country text field to have styling consistent with PMPro v3.1+. #65 (@andrewlimaza)
+* BUG FIX/ENHANCEMENT: Now retaining shipping state and country values when a checkout submission fails. #68 (@dwanjuki)
+
 = 0.5 - 2024-07-18 =
 * ENHANCEMENT: Updated the frontend UI for compatibility with PMPro v3.1. #64 (@andrewlimaza)
 * ENHANCEMENT: Now moving the Country field before the City field for better UX. #64 (@andrewlimaza)
