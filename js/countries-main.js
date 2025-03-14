@@ -54,7 +54,7 @@ jQuery(document).ready(function ($) {
 			if (jQuery('#bstate').hasClass('pmpro_error')) {
 				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
 			} else {
-				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" value="' + selected_state + '"/>');
+				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
 			}
 		}
 	});
