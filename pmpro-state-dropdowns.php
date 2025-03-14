@@ -112,16 +112,16 @@ class PMPro_State_Dropdowns {
 				$user_saved_countries['bstate'] = get_user_meta( $user_id, 'pmpro_bstate', true );
 			}
 
-			if( isset( $_REQUEST['scountry'] ) ){
-				$user_saved_countries['scountry'] = sanitize_text_field( $_REQUEST['scountry'] );
+			if( isset( $_REQUEST['pmpro_scountry'] ) ){
+				$user_saved_countries['scountry'] = sanitize_text_field( $_REQUEST['pmpro_scountry'] );
 			}elseif ( empty( get_user_meta( $user_id, 'pmpro_scountry', true ) ) ) {
 				$user_saved_countries['scountry'] = $pmpro_default_country;
 			}else{
 				$user_saved_countries['scountry'] = get_user_meta( $user_id, 'pmpro_scountry', true );
 			}
 
-			if( isset( $_REQUEST['sstate'] ) ){
-				$user_saved_countries['sstate'] = sanitize_text_field( $_REQUEST['sstate'] );
+			if( isset( $_REQUEST['pmpro_sstate'] ) ){
+				$user_saved_countries['sstate'] = sanitize_text_field( $_REQUEST['pmpro_sstate'] );
 			}else{
 				$user_saved_countries['sstate'] = get_user_meta( $user_id, 'pmpro_sstate', true );
 			}
