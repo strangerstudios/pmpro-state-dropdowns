@@ -1,11 +1,12 @@
 jQuery(document).ready(function ($) {
 
 	//for compatibility with older PMPro, make sure bcountry fields have ids
-	jQuery("[name='bcountry']").attr('id', 'bcountry');
-	jQuery("[name='scountry']").attr('id', 'scountry');
 
-	jQuery("[name='pmpro_bcountry']").attr('id', 'bcountry');
-	jQuery("[name='pmpro_bstate']").attr('id', 'bstate');
+	$("[name='bcountry']").attr('id', 'bcountry');
+	$("[name='scountry']").attr('id', 'scountry');
+
+	$("[name='pmpro_bcountry']").attr('id', 'bcountry');
+	$("[name='pmpro_bstate']").attr('id', 'bstate');
 
 	// Populate the dropdown on page load.
 	var selected_states = pmprosd_states[pmpro_state_dropdowns.bcountry];
@@ -132,6 +133,28 @@ jQuery(document).ready(function ($) {
 		pmprosd_populate_dropdown("#billing_state", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.bstate);
 
 	}
+
+	//PMPro payment settings page support
+	if ( $('#business_country').length ) {
+		//Replace the country text input with a dropdown
+		$( '#business_country' ).replaceWith('<select id="business_country" name="business_country" class="regular-text"></select>');
+		pmprosd_populate_dropdown( '#business_country', pmprosd_countries, pmpro_state_labels.country, pmpro_state_dropdowns.bcountry );
+		//Replace the state text input with a dropdown
+		$('#business_state').replaceWith( '<select id="business_state" name="business_state" class="regular-text"></select>' );
+		pmprosd_populate_dropdown( '#business_state', selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.bstate );
+
+		$('body').on( 'change', '#business_country', function () {
+			const selected_country = $(this).val();
+			const selected_states = pmprosd_states[selected_country];
+			if (typeof selected_states !== 'undefined' && $(selected_states).length > 0) {
+				$('#business_state').replaceWith( '<select id="business_state" name="business_state" class="regular-text"></select>' );
+			} else {
+				$('#business_state').replaceWith( '<input type="text" id="business_state" name="business_state" class="regular-text" />' );
+			}
+			pmprosd_populate_dropdown( '#business_state', selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.bstate );
+		});
+	}
+
 
 	jQuery('body').on('change', "[name='billing_country']", function () {
 		var selected_country = jQuery(this).val();
