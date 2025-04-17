@@ -21,8 +21,8 @@ jQuery(document).ready(function ($) {
 		// Get the states for a specific country.
 		var states_for_countries = pmprosd_states[pmpro_state_dropdowns.bcountry];
 		if (typeof states_for_countries !== 'undefined' && jQuery(states_for_countries).length > 0) {
-			if (jQuery('#bstate').hasClass('pmpro_error')) {
-				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate
+			if (jQuery('#bstate').hasClass('pmpro_form_input-error')) {
+				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_form_input-error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate
 			} else {
 				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate
 			}
@@ -30,8 +30,8 @@ jQuery(document).ready(function ($) {
 			pmprosd_populate_dropdown("#bstate", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.bstate);
 		} else {
 			var selected_state = (typeof pmpro_state_dropdowns.bstate !== 'undefined') ? pmpro_state_dropdowns.bstate : "";
-			if (jQuery('#bstate').hasClass('pmpro_error')) {
-				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
+			if (jQuery('#bstate').hasClass('pmpro_form_input-error')) {
+				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_form_input-error pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
 			} else {
 				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
 			}
@@ -43,16 +43,16 @@ jQuery(document).ready(function ($) {
 		var selected_country = jQuery(this).val();
 		var selected_states = pmprosd_states[selected_country];
 		if (typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0) {
-			if (jQuery("#bstate").hasClass('pmpro_error')) {
-				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate
+			if (jQuery("#bstate").hasClass('pmpro_form_input-error')) {
+				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_form_input-error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate
 			} else {
 				jQuery("#bstate").replaceWith('<select id="bstate" name="bstate" class="pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate
 			}
 			pmprosd_populate_dropdown("#bstate", selected_states, pmpro_state_labels.region, '');
 		} else {
 			var selected_state = (typeof pmpro_state_dropdowns.bstate !== 'undefined') ? pmpro_state_dropdowns.bstate : "";
-			if (jQuery('#bstate').hasClass('pmpro_error')) {
-				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_error pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
+			if (jQuery('#bstate').hasClass('pmpro_form_input-error')) {
+				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_form_input-error pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
 			} else {
 				jQuery("#bstate").replaceWith('<input type="text" id="bstate" name="bstate" class="pmpro_form_input pmpro_form_input-text" value="' + selected_state + '"/>');
 			}
@@ -69,16 +69,16 @@ jQuery(document).ready(function ($) {
 
 		var selected_states = pmprosd_states[pmpro_state_dropdowns.scountry];
 		if (typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0) {
-			if (jQuery("#pmpro_sstate").hasClass('pmpro_error')) {
-				jQuery('#pmpro_sstate').replaceWith('<select id="pmpro_sstate" name="pmpro_sstate" class="pmpro_error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate   
+			if (jQuery("#pmpro_sstate").hasClass('pmpro_form_input-error')) {
+				jQuery('#pmpro_sstate').replaceWith('<select id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input-error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate   
 			} else {
 				jQuery('#pmpro_sstate').replaceWith('<select id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate   
 			}
 			pmprosd_populate_dropdown("#pmpro_sstate", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate);
 		} else {
 			var selected_state = (typeof pmpro_state_dropdowns.sstate !== 'undefined') ? pmpro_state_dropdowns.sstate : "";
-			if (jQuery("#pmpro_sstate").hasClass('pmpro_error')) {
-				jQuery("#pmpro_sstate").replaceWith('<input type="text" id="pmpro_sstate" name="pmpro_sstate" class="pmpro_error pmpro_form_input pmpro_form_input-text" value="' + selected_state + '" />');
+			if (jQuery("#pmpro_sstate").hasClass('pmpro_form_input-error')) {
+				jQuery("#pmpro_sstate").replaceWith('<input type="text" id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input-error pmpro_form_input pmpro_form_input-text" value="' + selected_state + '" />');
 			} else {
 				jQuery("#pmpro_sstate").replaceWith('<input type="text" id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input pmpro_form_input-text" value="' + selected_state + '" />');
 			}
@@ -90,16 +90,16 @@ jQuery(document).ready(function ($) {
 		var selected_country = jQuery(this).val();
 		var selected_states = pmprosd_states[selected_country];
 		if (typeof selected_states !== 'undefined' && jQuery(selected_states).length > 0) {
-			if (jQuery("#pmpro_sstate").hasClass('pmpro_error')) {
-				jQuery("#pmpro_sstate").replaceWith('<select id="pmpro_sstate" name="pmpro_sstate" class="pmpro_error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate   
+			if (jQuery("#pmpro_sstate").hasClass('pmpro_form_input-error')) {
+				jQuery("#pmpro_sstate").replaceWith('<select id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input-error pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate   
 			} else {
 				jQuery("#pmpro_sstate").replaceWith('<select id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input pmpro_form_input-select"></select>');  //convert to dropdown so states can auto-populate   
 			}
 			pmprosd_populate_dropdown("#pmpro_sstate", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.sstate);
 		} else {
 			var selected_state = (typeof pmpro_state_dropdowns.sstate !== 'undefined') ? pmpro_state_dropdowns.sstate : "";
-			if (jQuery("#pmpro_sstate").hasClass('pmpro_error')) {
-				jQuery("#pmpro_sstate").replaceWith('<input type="text" id="pmpro_sstate" name="pmpro_sstate" class="pmpro_error" class="pmpro_form_input pmpro_form_input-text" value="' + selected_state + '" />');
+			if (jQuery("#pmpro_sstate").hasClass('pmpro_form_input-error')) {
+				jQuery("#pmpro_sstate").replaceWith('<input type="text" id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input-error" class="pmpro_form_input pmpro_form_input-text" value="' + selected_state + '" />');
 			} else {
 				jQuery("#pmpro_sstate").replaceWith('<input type="text" id="pmpro_sstate" name="pmpro_sstate" class="pmpro_form_input pmpro_form_input-text" value="' + selected_state + '" />');
 			}
@@ -166,4 +166,3 @@ jQuery(document).ready(function ($) {
 	}
 
 });
-
