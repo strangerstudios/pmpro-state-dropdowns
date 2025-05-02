@@ -1,4 +1,4 @@
-![](pmpro-state-dropdowns.png)
+![](pmpro-state-dropdowns-banner.png)
 
 # [Paid Memberships Pro - Country and State Dropdown](https://www.paidmembershipspro.com/add-ons/state-dropdown/) #
 [comment]: # (Generate badges from shields.io, only works for .org plugins to get other stats etc. We'd have to create our own endpoints for Premium plugins)
