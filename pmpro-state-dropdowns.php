@@ -32,7 +32,9 @@ class PMPro_State_Dropdowns {
 		add_action( 'init', array( $this, 'init' ) );
 
 		// Stop requiring the billing state field when the selected billing country has no states defined.
-		add_filter( 'pmpro_required_billing_fields', array( $this, 'filter_required_billing_fields' ) );
+		// Run late: gateways filter this at the default priority and the Address for Free Levels Add On
+		// re-adds the address fields at priority 30, so we need the last word on the state field.
+		add_filter( 'pmpro_required_billing_fields', array( $this, 'filter_required_billing_fields' ), 99 );
 
 		// Stop requiring the shipping state field (PMPro Shipping Add On) when the selected shipping country
 		// has no states defined. Runs after PMPro Shipping registers its fields on 'init' (priority 10).
@@ -70,7 +72,8 @@ class PMPro_State_Dropdowns {
 	 * @return array
 	 */
 	function filter_required_billing_fields( $fields ) {
-		if ( ! isset( $fields['bstate'] ) ) {
+		// array_key_exists rather than isset: other callbacks can add the key with a null value.
+		if ( ! array_key_exists( 'bstate', $fields ) ) {
 			return $fields;
 		}
 
