@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Paid Memberships Pro - State Dropdowns plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Paid Memberships Pro - State Dropdowns 0.5.3\n"
+"Project-Id-Version: Paid Memberships Pro - State Dropdowns 0.5.4\n"
 "Report-Msgid-Bugs-To: info@paidmembershipspro.com\n"
 "Last-Translator: Paid Memberships Pro <info@paidmembershipspro.com>\n"
 "Language-Team: Paid Memberships Pro <info@paidmembershipspro.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-30T17:53:12+00:00\n"
+"POT-Creation-Date: 2026-09-15T15:44:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pmpro-state-dropdowns\n"
@@ -9638,6 +9638,7 @@ msgstr ""
 
 #: pmpro-state-dropdowns.php:77
 #: pmpro-state-dropdowns.php:85
+#: pmpro-state-dropdowns.php:162
 msgid "Select country"
 msgstr ""
 
@@ -9649,6 +9650,7 @@ msgstr ""
 #: pmpro-state-dropdowns.php:145
 #: pmpro-state-dropdowns.php:153
 #: pmpro-state-dropdowns.php:156
+#: pmpro-state-dropdowns.php:233
 msgid "View Documentation"
 msgstr ""
 
@@ -9656,6 +9658,7 @@ msgstr ""
 #: pmpro-state-dropdowns.php:145
 #: pmpro-state-dropdowns.php:153
 #: pmpro-state-dropdowns.php:156
+#: pmpro-state-dropdowns.php:233
 msgid "Docs"
 msgstr ""
 
@@ -9663,6 +9666,7 @@ msgstr ""
 #: pmpro-state-dropdowns.php:146
 #: pmpro-state-dropdowns.php:154
 #: pmpro-state-dropdowns.php:157
+#: pmpro-state-dropdowns.php:234
 msgid "Visit Customer Support Forum"
 msgstr ""
 
@@ -9670,11 +9674,13 @@ msgstr ""
 #: pmpro-state-dropdowns.php:146
 #: pmpro-state-dropdowns.php:154
 #: pmpro-state-dropdowns.php:157
+#: pmpro-state-dropdowns.php:234
 msgid "Support"
 msgstr ""
 
 #: pmpro-state-dropdowns.php:77
 #: pmpro-state-dropdowns.php:85
+#: pmpro-state-dropdowns.php:162
 msgid "Select state"
 msgstr ""
 
