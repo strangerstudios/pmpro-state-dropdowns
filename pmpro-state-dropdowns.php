@@ -30,6 +30,83 @@ class PMPro_State_Dropdowns {
 
 	private function __construct() {
 		add_action( 'init', array( $this, 'init' ) );
+
+		// Stop requiring the billing state field when the selected billing country has no states defined.
+		// Run late: gateways filter this at the default priority and the Address for Free Levels Add On
+		// re-adds the address fields at priority 30, so we need the last word on the state field.
+		add_filter( 'pmpro_required_billing_fields', array( $this, 'filter_required_billing_fields' ), 99 );
+
+		// Stop requiring the shipping state field (PMPro Shipping Add On) when the selected shipping country
+		// has no states defined. Runs after PMPro Shipping registers its fields on 'init' (priority 10).
+		add_action( 'init', array( $this, 'update_shipping_state_requirement' ), 20 );
+	}
+
+	/**
+	 * Get the country to use when checking whether a state field should be required.
+	 *
+	 * Uses the submitted value if there is one, otherwise falls back to the user's saved
+	 * country or the site's default country, matching the way the country is defaulted
+	 * elsewhere in this plugin.
+	 *
+	 * @param string $request_key The $_REQUEST key that holds the submitted country (e.g. 'bcountry').
+	 * @param string $meta_key    The user meta key that stores the saved country (e.g. 'pmpro_bcountry').
+	 * @return string
+	 */
+	private function get_current_country( $request_key, $meta_key ) {
+		global $current_user, $pmpro_default_country;
+
+		if ( isset( $_REQUEST[ $request_key ] ) ) {
+			return sanitize_text_field( wp_unslash( $_REQUEST[ $request_key ] ) );
+		}
+
+		$saved_country = ! empty( $current_user->ID ) ? get_user_meta( $current_user->ID, $meta_key, true ) : '';
+
+		return ! empty( $saved_country ) ? $saved_country : $pmpro_default_country;
+	}
+
+	/**
+	 * Filter the required billing fields at checkout to remove the billing state field
+	 * when the selected billing country doesn't have any states/provinces defined.
+	 *
+	 * @param array $fields The billing fields required at checkout, keyed by field name.
+	 * @return array
+	 */
+	function filter_required_billing_fields( $fields ) {
+		// array_key_exists rather than isset: other callbacks can add the key with a null value.
+		if ( ! array_key_exists( 'bstate', $fields ) ) {
+			return $fields;
+		}
+
+		$bcountry = $this->get_current_country( 'bcountry', 'pmpro_bcountry' );
+		$states   = pmprosd_states();
+
+		if ( isset( $states[ $bcountry ] ) && empty( $states[ $bcountry ] ) ) {
+			unset( $fields['bstate'] );
+		}
+
+		return $fields;
+	}
+
+	/**
+	 * Stop requiring the shipping state field (added by the PMPro Shipping Add On) when the
+	 * selected shipping country doesn't have any states/provinces defined.
+	 */
+	function update_shipping_state_requirement() {
+		if ( ! class_exists( 'PMPro_Field_Group' ) ) {
+			return;
+		}
+
+		$sstate_field = PMPro_Field_Group::get_field( 'pmpro_sstate' );
+		if ( empty( $sstate_field ) ) {
+			return;
+		}
+
+		$scountry = $this->get_current_country( 'pmpro_scountry', 'pmpro_scountry' );
+		$states   = pmprosd_states();
+
+		if ( isset( $states[ $scountry ] ) && empty( $states[ $scountry ] ) ) {
+			$sstate_field->required = false;
+		}
 	}
 
 	function init(){
@@ -43,7 +120,7 @@ class PMPro_State_Dropdowns {
 		// Only add this in for Pre 3.1 versions of PMPro.
 		if ( defined( 'PMPRO_VERSION' ) && version_compare( PMPRO_VERSION, '3.1', '<' ) ) {
 			add_filter( 'pmpro_longform_address', '__return_true' );
-		}	
+		}
 
 		/**
 		 * Load plugin's textdomain for translations
