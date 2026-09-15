@@ -2,8 +2,8 @@
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, states, counties, provences
 Requires at least: 5.2
-Tested up to: 6.9
-Stable tag: 0.5.3
+Tested up to: 7.1
+Stable tag: 0.5.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,9 @@ Existing users that have entered their State/Province before using this add-on m
 Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+= 0.5.4 - 2026-09-15 =
+* BUG FIX/ENHANCEMENT: When the selected billing or shipping country has no states or provinces, the state field is now hidden and no longer required, instead of being shown as a required text field that could block checkout. Countries not included in the plugin's state data still show a text field. #76 (@kimwhite)
+
 = 0.5.3 - 2026-04-30 =
 * BUG FIX: Added compatibility with the order ID URL parameter introduced in Paid Memberships Pro v3.6. Without this fix, edits made on the admin Edit Order page would fall back to user meta or the default country. #75 (@dparker1005)
 
