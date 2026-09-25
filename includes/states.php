@@ -1,6 +1,10 @@
 <?php
 // Data pulled from https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/i18n/states.php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Function to get all states for a given country.
  *
