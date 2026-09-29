@@ -55,8 +55,8 @@ class PMPro_State_Dropdowns {
 	private function get_current_country( $request_key, $meta_key ) {
 		global $current_user, $pmpro_default_country;
 
-		if ( isset( $_REQUEST[ $request_key ] ) ) {
-			return sanitize_text_field( wp_unslash( $_REQUEST[ $request_key ] ) );
+		if ( isset( $_REQUEST[ $request_key ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only: only decides whether the state field is required; nothing is saved here.
+			return sanitize_text_field( wp_unslash( $_REQUEST[ $request_key ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only: nothing is saved here.
 		}
 
 		$saved_country = ! empty( $current_user->ID ) ? get_user_meta( $current_user->ID, $meta_key, true ) : '';
@@ -140,8 +140,9 @@ class PMPro_State_Dropdowns {
 			$user_id = $current_user->ID;
 		}
 
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only: request values only pick which page to enqueue on and which country/state to preselect; nothing is saved here.
 		//we only want to enqueue this on certain pages
-		 $script_name = basename( $_SERVER['SCRIPT_NAME'] );
+		$script_name = isset( $_SERVER['SCRIPT_NAME'] ) ? basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) : '';
 		if( is_admin() &&  $script_name !== 'user-edit.php' && 
 						   $script_name !== 'profile.php' && 
 						  ( empty( $_REQUEST['page'] ) || $_REQUEST['page'] != 'pmpro-addmember' && $_REQUEST['page'] != 'pmpro-orders'  ) ){
@@ -179,7 +180,7 @@ class PMPro_State_Dropdowns {
 		//if $morder is not empty (i.e. on the orders page try to get details from REQUEST or USER META )
 		if( ! isset($morder) ){
 			if( isset( $_REQUEST['bcountry'] ) ){
-				$user_saved_countries['bcountry'] = sanitize_text_field( $_REQUEST['bcountry'] );
+				$user_saved_countries['bcountry'] = sanitize_text_field( wp_unslash( $_REQUEST['bcountry'] ) );
 			}elseif ( empty( get_user_meta( $user_id, 'pmpro_bcountry', true ) ) ) {
 				$user_saved_countries['bcountry'] = $pmpro_default_country;
 			}else{
@@ -187,13 +188,13 @@ class PMPro_State_Dropdowns {
 			}
 
 			if( isset( $_REQUEST['bstate'] ) ){
-				$user_saved_countries['bstate'] = sanitize_text_field( $_REQUEST['bstate'] );
+				$user_saved_countries['bstate'] = sanitize_text_field( wp_unslash( $_REQUEST['bstate'] ) );
 			}else{
 				$user_saved_countries['bstate'] = get_user_meta( $user_id, 'pmpro_bstate', true );
 			}
 
 			if( isset( $_REQUEST['pmpro_scountry'] ) ){
-				$user_saved_countries['scountry'] = sanitize_text_field( $_REQUEST['pmpro_scountry'] );
+				$user_saved_countries['scountry'] = sanitize_text_field( wp_unslash( $_REQUEST['pmpro_scountry'] ) );
 			}elseif ( empty( get_user_meta( $user_id, 'pmpro_scountry', true ) ) ) {
 				$user_saved_countries['scountry'] = $pmpro_default_country;
 			}else{
@@ -201,7 +202,7 @@ class PMPro_State_Dropdowns {
 			}
 
 			if( isset( $_REQUEST['pmpro_sstate'] ) ){
-				$user_saved_countries['sstate'] = sanitize_text_field( $_REQUEST['pmpro_sstate'] );
+				$user_saved_countries['sstate'] = sanitize_text_field( wp_unslash( $_REQUEST['pmpro_sstate'] ) );
 			}else{
 				$user_saved_countries['sstate'] = get_user_meta( $user_id, 'pmpro_sstate', true );
 			}
@@ -210,6 +211,8 @@ class PMPro_State_Dropdowns {
 			$user_saved_countries['bcountry'] = $morder->billing->country;
 			$user_saved_countries['bstate'] = $morder->billing->state;			
 		}	
+
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		wp_localize_script( 'pmpro-countries-main', 'pmpro_state_dropdowns', $user_saved_countries );
 		
