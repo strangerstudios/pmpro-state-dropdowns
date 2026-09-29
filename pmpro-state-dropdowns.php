@@ -3,7 +3,7 @@
  * Plugin Name: Paid Memberships Pro - State Dropdowns
  * Plugin URI: https://www.paidmembershipspro.com/add-ons/state-dropdown/
  * Description: Creates an autopopulated field for countries and states/provinces for billing fields.
- * Version: 0.5.4
+ * Version: 0.5.5
  * Author: Paid Memberships Pro
  * Author URI: https://www.paidmembershipspro.com
  * Text Domain: pmpro-state-dropdowns
@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) or exit;
 
-define( 'PMPROSD_VERSION', '0.5.4' );
+define( 'PMPROSD_VERSION', '0.5.5' );
 
 require_once dirname( __FILE__ ) . '/includes/states.php';
 
