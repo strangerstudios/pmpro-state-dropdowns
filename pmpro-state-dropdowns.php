@@ -142,7 +142,7 @@ class PMPro_State_Dropdowns {
 
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only: request values only pick which page to enqueue on and which country/state to preselect; nothing is saved here.
 		//we only want to enqueue this on certain pages
-		 $script_name = isset( $_SERVER['SCRIPT_NAME'] ) ? basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) : '';
+		$script_name = isset( $_SERVER['SCRIPT_NAME'] ) ? basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) : '';
 		if( is_admin() &&  $script_name !== 'user-edit.php' && 
 						   $script_name !== 'profile.php' && 
 						  ( empty( $_REQUEST['page'] ) || $_REQUEST['page'] != 'pmpro-addmember' && $_REQUEST['page'] != 'pmpro-orders'  ) ){
