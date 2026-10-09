@@ -19,13 +19,15 @@ jQuery(document).ready(function ($) {
 	 *    it is neither shown nor required.
 	 * 3. The country has states. Show the field and rebuild it as a populated dropdown.
 	 *
-	 * @param {string} id       The id (and name) of the state field, e.g. "bstate" or "pmpro_sstate".
+	 * @param {string} id       The id of the state field, e.g. "bstate" or "pmpro_sstate". The field's name is kept.
 	 * @param {string} wrapper  A selector for the field's wrapping element to show/hide.
 	 * @param {Object} states   The states for the currently selected country, keyed by abbreviation, or undefined.
 	 * @param {string} selected The value that should be selected/prefilled, if any.
 	 */
 	function pmprosd_update_state_field(id, wrapper, states, selected) {
 		var $field = jQuery('#' + id);
+		// Keep the original name so the value still saves, e.g. "pmpro_bstate" on the profile.
+		var name = $field.attr('name') || id;
 		var $wrapper = jQuery(wrapper);
 		var has_error = $field.hasClass('pmpro_form_input-error');
 		var error_class = has_error ? 'pmpro_form_input-error ' : '';
@@ -34,7 +36,7 @@ jQuery(document).ready(function ($) {
 		if (typeof states === 'undefined' || states === null) {
 			// Case 1: no data for this country. Keep a visible, required text input.
 			$wrapper.show();
-			$field.replaceWith('<input type="text" id="' + id + '" name="' + id + '" class="' + error_class + 'pmpro_form_input pmpro_form_input-text" />');
+			$field.replaceWith('<input type="text" id="' + id + '" name="' + name + '" class="' + error_class + 'pmpro_form_input pmpro_form_input-text" />');
 			jQuery('#' + id).val(value);
 			return;
 		}
@@ -48,7 +50,7 @@ jQuery(document).ready(function ($) {
 
 		// Case 3: the country has states/provinces. Show the field and rebuild it as a dropdown.
 		$wrapper.show();
-		$field.replaceWith('<select id="' + id + '" name="' + id + '" class="' + error_class + 'pmpro_form_input pmpro_form_input-select"></select>');
+		$field.replaceWith('<select id="' + id + '" name="' + name + '" class="' + error_class + 'pmpro_form_input pmpro_form_input-select"></select>');
 		pmprosd_populate_dropdown('#' + id, states, pmpro_state_labels.region, value);
 	}
 
