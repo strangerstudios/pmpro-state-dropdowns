@@ -81,6 +81,11 @@ jQuery(document).ready(function ($) {
 
 		var selected_states = pmprosd_states[pmpro_state_dropdowns.scountry];
 		pmprosd_update_state_field('pmpro_sstate', '#pmpro_sstate_div', selected_states, pmpro_state_dropdowns.sstate);
+
+		// Keep the state field hidden along with the rest of the mailing fields when "same as billing" is checked.
+		if (jQuery('#pmproship_same_billing_address').is(':checked')) {
+			jQuery('#pmpro_sstate_div').hide();
+		}
 	}
 
 	jQuery('body').on('change', "#pmpro_scountry", function () {
@@ -97,6 +102,9 @@ jQuery(document).ready(function ($) {
 			var selected_state = jQuery('#bstate').val();
 			var billing_states = pmprosd_states[jQuery('#bcountry').val()];
 			pmprosd_update_state_field('pmpro_sstate', '#pmpro_sstate_div', billing_states, selected_state);
+
+			// Keep the state field hidden along with the rest of the mailing fields when "same as billing" is checked.
+			jQuery('#pmpro_sstate_div').hide();
 		} else {
 			var shipping_states = pmprosd_states[jQuery('#pmpro_scountry').val()];
 			pmprosd_update_state_field('pmpro_sstate', '#pmpro_sstate_div', shipping_states, '');
