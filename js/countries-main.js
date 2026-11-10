@@ -69,7 +69,28 @@ jQuery(document).ready(function ($) {
 		var selected_country = jQuery(this).val();
 		var selected_states = pmprosd_states[selected_country];
 		pmprosd_update_state_field('bstate', '.pmpro_form_field-bstate', selected_states, '');
+
+		// If the mailing address is copying the billing address, rebuild the mailing state field for the new
+		// billing country so the copied state matches one of its options, and keep it hidden.
+		if (jQuery('#pmpro_sstate').length && pmprosd_is_copying_billing_address()) {
+			pmprosd_update_state_field('pmpro_sstate', '#pmpro_sstate_div', selected_states, '');
+			jQuery('#pmpro_sstate_div').hide();
+		}
 	});
+
+	/**
+	 * Whether the Mailing Add On is copying the billing address into the mailing fields.
+	 *
+	 * Matches the Mailing Add On's own condition: it only hides and copies the mailing fields when the
+	 * "same as billing" checkbox is checked and the billing address fields are visible.
+	 *
+	 * @since TBD
+	 *
+	 * @return {boolean} True if the mailing fields are being copied from the billing address, false otherwise.
+	 */
+	function pmprosd_is_copying_billing_address() {
+		return jQuery('#pmproship_same_billing_address').is(':checked') && jQuery('#pmpro_billing_address_fields').is(':visible');
+	}
 
 	//pmpro-shipping support
 	if (jQuery('#pmpro_scountry').length) {
@@ -83,7 +104,7 @@ jQuery(document).ready(function ($) {
 		pmprosd_update_state_field('pmpro_sstate', '#pmpro_sstate_div', selected_states, pmpro_state_dropdowns.sstate);
 
 		// Keep the state field hidden along with the rest of the mailing fields when "same as billing" is checked.
-		if (jQuery('#pmproship_same_billing_address').is(':checked')) {
+		if (pmprosd_is_copying_billing_address()) {
 			jQuery('#pmpro_sstate_div').hide();
 		}
 	}
