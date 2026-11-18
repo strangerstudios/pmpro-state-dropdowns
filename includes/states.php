@@ -2254,7 +2254,7 @@ $pmprosd_states = apply_filters( 'pmprosd_states', array(
  *
  * Used when the member hasn't submitted or saved a state yet.
  *
- * @since TBD
+ * @since 0.5.6
  *
  * @param string $country The country code the state is for.
  * @return string The default state code, or an empty string for no default.
@@ -2263,7 +2263,7 @@ function pmprosd_get_default_state( $country ) {
 	/**
 	 * Filter the default state/province for a country.
 	 *
-	 * @since TBD
+	 * @since 0.5.6
 	 *
 	 * @param string $state   The default state code. Default empty (no default).
 	 * @param string $country The country code the state is for.

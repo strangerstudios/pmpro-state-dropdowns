@@ -3,7 +3,7 @@ Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, states, counties, provences
 Requires at least: 5.2
 Tested up to: 7.1
-Stable tag: 0.5.5
+Stable tag: 0.5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,11 @@ Existing users that have entered their State/Province before using this add-on m
 Not all countries may be fully supported regarding the State/Province list. If you find a fault with your country's State/Province list, please post it in the GitHub issue tracker here: https://github.com/strangerstudios/pmpro-state-dropdowns/issues
 
 == Changelog ==
+= 0.5.6 - 2026-11-18 =
+* ENHANCEMENT: Added the `pmprosd_default_state` filter to set a default state for the billing and mailing address fields. #79 (@dparker1005)
+* BUG FIX: Fixed an issue where the state selected in a billing state user field on the profile page would not save. #78 (@dparker1005)
+* BUG FIX: Fixed an issue where the mailing state field was shown when the Mailing Address Add On's "same as billing address" option was checked. #80 (@kimwhite)
+
 = 0.5.5 - 2026-09-29 =
 * SECURITY: Improved sanitization and escaping throughout the plugin to resolve Plugin Check security findings. #77 (@dparker1005)
 
