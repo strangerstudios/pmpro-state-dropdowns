@@ -189,6 +189,8 @@ class PMPro_State_Dropdowns {
 
 			if( isset( $_REQUEST['bstate'] ) ){
 				$user_saved_countries['bstate'] = sanitize_text_field( wp_unslash( $_REQUEST['bstate'] ) );
+			}elseif ( empty( get_user_meta( $user_id, 'pmpro_bstate', true ) ) ) {
+				$user_saved_countries['bstate'] = pmprosd_get_default_state( $user_saved_countries['bcountry'] );
 			}else{
 				$user_saved_countries['bstate'] = get_user_meta( $user_id, 'pmpro_bstate', true );
 			}
@@ -203,6 +205,8 @@ class PMPro_State_Dropdowns {
 
 			if( isset( $_REQUEST['pmpro_sstate'] ) ){
 				$user_saved_countries['sstate'] = sanitize_text_field( wp_unslash( $_REQUEST['pmpro_sstate'] ) );
+			}elseif ( empty( get_user_meta( $user_id, 'pmpro_sstate', true ) ) ) {
+				$user_saved_countries['sstate'] = pmprosd_get_default_state( $user_saved_countries['scountry'] );
 			}else{
 				$user_saved_countries['sstate'] = get_user_meta( $user_id, 'pmpro_sstate', true );
 			}
