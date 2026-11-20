@@ -164,7 +164,9 @@ jQuery(document).ready(function ($) {
 			jQuery('#billing_state').replaceWith('<input type="text" id="billing_state" name="billing_state" class="pmpro_form_input pmpro_form_input-text" />');
 		}
 
-		pmprosd_populate_dropdown("#billing_state", selected_states, pmpro_state_labels.region, pmpro_state_dropdowns.bstate);
+		// Only preselect the order's saved state when switching back to the order's saved country.
+		var selected_state = (selected_country === pmpro_state_dropdowns.bcountry) ? pmpro_state_dropdowns.bstate : '';
+		pmprosd_populate_dropdown("#billing_state", selected_states, pmpro_state_labels.region, selected_state);
 	});
 
 	function pmprosd_populate_dropdown(id, states, first_label, selected) {
