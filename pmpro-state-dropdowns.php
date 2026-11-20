@@ -171,7 +171,15 @@ class PMPro_State_Dropdowns {
 
 		//check to see if user is  on the admin page.
 		if ( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['id']) ) {
-			$morder = new MemberOrder( absint( $_GET['id'] ) );
+			// Match core: a positive id edits that order, while id=-1 adds a new order, optionally copied from another one.
+			$edit_order_id = intval( $_GET['id'] );
+			if ( $edit_order_id > 0 ) {
+				$morder = new MemberOrder( $edit_order_id );
+			} elseif ( ! empty( $_GET['copy'] ) ) {
+				$morder = new MemberOrder( intval( $_GET['copy'] ) );
+			} else {
+				$morder = new MemberOrder();
+			}
 		} elseif ( is_admin() && isset($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-orders' && !empty($_GET['order']) ) {
 			// Pre-3.6 compatibility.
 			$morder = new MemberOrder( absint( $_GET['order'] ) );
