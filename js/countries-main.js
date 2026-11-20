@@ -54,10 +54,14 @@ jQuery(document).ready(function ($) {
 		pmprosd_populate_dropdown('#' + id, states, pmpro_state_labels.region, value);
 	}
 
+	// The billing state field's wrapper: the checkout/billing field, or the pmpro_bstate User Field on the
+	// front-end profile (div) or the admin profile screens (table row).
+	var bstate_wrapper = '.pmpro_form_field-bstate, #pmpro_bstate_div, #pmpro_bstate_tr';
+
 	//make sure we have a bstate field to work with
 	if (jQuery('#bstate').length) {
 		var selected_states = pmprosd_states[pmpro_state_dropdowns.bcountry];
-		pmprosd_update_state_field('bstate', '.pmpro_form_field-bstate', selected_states, pmpro_state_dropdowns.bstate);
+		pmprosd_update_state_field('bstate', bstate_wrapper, selected_states, pmpro_state_dropdowns.bstate);
 	}
 
 	//make sure we have a bcountry field to work with
@@ -70,7 +74,7 @@ jQuery(document).ready(function ($) {
 	jQuery('body').on('change', "#bcountry", function () {
 		var selected_country = jQuery(this).val();
 		var selected_states = pmprosd_states[selected_country];
-		pmprosd_update_state_field('bstate', '.pmpro_form_field-bstate', selected_states, '');
+		pmprosd_update_state_field('bstate', bstate_wrapper, selected_states, '');
 
 		// If the mailing address is copying the billing address, rebuild the mailing state field for the new
 		// billing country so the copied state matches one of its options, and keep it hidden.
