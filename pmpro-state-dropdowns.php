@@ -135,17 +135,20 @@ class PMPro_State_Dropdowns {
 			return;
 		}
 
-		//fallback to current user on pages that don't support $user_id variable.
-		if( empty( $user_id ) ){
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only: request values only pick which page to enqueue on and which country/state to preselect; nothing is saved here.
+		if ( is_admin() && ! empty( $_REQUEST['page'] ) && 'pmpro-member' === $_REQUEST['page'] ) {
+			// The Edit Member screen passes the member being edited in user_id. It is empty when adding a new member.
+			$user_id = ! empty( $_REQUEST['user_id'] ) ? intval( $_REQUEST['user_id'] ) : 0;
+		} elseif ( empty( $user_id ) ) {
+			//fallback to current user on pages that don't support $user_id variable.
 			$user_id = $current_user->ID;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only: request values only pick which page to enqueue on and which country/state to preselect; nothing is saved here.
 		//we only want to enqueue this on certain pages
 		$script_name = isset( $_SERVER['SCRIPT_NAME'] ) ? basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) : '';
 		if( is_admin() &&  $script_name !== 'user-edit.php' && 
 						   $script_name !== 'profile.php' && 
-						  ( empty( $_REQUEST['page'] ) || $_REQUEST['page'] != 'pmpro-addmember' && $_REQUEST['page'] != 'pmpro-orders'  ) ){
+						  ( empty( $_REQUEST['page'] ) || $_REQUEST['page'] != 'pmpro-addmember' && $_REQUEST['page'] != 'pmpro-member' && $_REQUEST['page'] != 'pmpro-orders'  ) ){
 			return;
 		}
 
