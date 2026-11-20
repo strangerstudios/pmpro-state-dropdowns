@@ -151,8 +151,14 @@ class PMPro_State_Dropdowns {
 
 
 		// Check to see if we're on the front-end and not on these specific pages.
-		if ( ! is_admin() && ( ! is_page( 'your-profile' ) && ! is_page( $pmpro_pages['billing'] ) && ! pmpro_is_checkout() ) ) {
-			return;
+		if ( ! is_admin() ) {
+			// Only check PMPro pages that are set, since is_page() with an empty value matches every page.
+			// The 'your-profile' slug is kept for sites that relied on it before the Member Profile Edit page was checked.
+			$is_profile_page = is_page( 'your-profile' ) || ( ! empty( $pmpro_pages['member_profile_edit'] ) && is_page( $pmpro_pages['member_profile_edit'] ) );
+			$is_billing_page = ! empty( $pmpro_pages['billing'] ) && is_page( $pmpro_pages['billing'] );
+			if ( ! $is_profile_page && ! $is_billing_page && ! pmpro_is_checkout() ) {
+				return;
+			}
 		}
 
 		/**
